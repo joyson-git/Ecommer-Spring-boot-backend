@@ -1,16 +1,17 @@
 package com.Ecommer.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "payment")
 public class Payment {
 
 
-    @id
+    @Id
     private String id;
-     private String orderId;
-     private double amount;
-     private String status;
+    private String orderId;
+    private double amount;
+    private String status;
 
 
      public  Payment(){}

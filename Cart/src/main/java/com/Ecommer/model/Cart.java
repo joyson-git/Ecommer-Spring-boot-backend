@@ -1,5 +1,7 @@
 package com.Ecommer.model;
 
+
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -10,41 +12,41 @@ public class Cart {
     private String id;
 
     private String userId;
-   private String productId;
-   private  Integer quantity;
+    private String productId;
+    private Integer quantity;
 
-   public  Cart(){
+    public Cart() {
+    }
 
-   }
-   public Cart(String id,String userId, String productId, Integer quantity){
-       this.id = id;
-       this.userId = userId;
-       this.productId = productId;
-       this.quantity = quantity;
-   }
+    public Cart(String id, String userId, String productId, Integer quantity) {
+        this.id = id;
+        this.userId = userId;
+        this.productId = productId;
+        this.quantity = quantity;
+    }
 
- public String setId(){
-       return id;
- }
-
- public void getId(String id){
-       this.id= id;
- }
-
-    public String setuserId(){
+    public String getId() {
         return id;
     }
 
-    public void getuserId(String userId){
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 
-    public  String getProductId(){
-       return productId;
+    public String getProductId() {
+        return productId;
     }
 
-    public void  getProductId(String ProductId){
-       this.productId = productId;
+    public void setProductId(String productId) {
+        this.productId = productId;
     }
 
     public Integer getQuantity() {

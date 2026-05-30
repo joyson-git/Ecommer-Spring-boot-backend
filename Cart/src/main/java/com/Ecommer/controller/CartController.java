@@ -24,13 +24,11 @@ public class CartController {
 
     @GetMapping("/{userId}")
     public List<Cart> getUserCart(@PathVariable String userId) {
-
         return cartService.getUserCart(userId);
     }
 
     @GetMapping("/product/{id}")
- public Product  getProductFromProductService(
-            @PathVariable String id){
+    public Product  getProductFromProductService(@PathVariable String id){
         return  cartService.getProduct(id);
     }
 

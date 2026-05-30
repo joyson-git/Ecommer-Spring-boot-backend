@@ -22,6 +22,7 @@ public class CartService {
 
 public  String addToCart(Cart cart){
         cartRepository.save(cart);
+        System.out.print(cart +"  ");
         return " the project is add";
 }
 
@@ -29,9 +30,6 @@ public  String addToCart(Cart cart){
 
         return cartRepository.findByUserId(userId);
     }
-
-
-
 
     public Product getProduct(String productId){
         return restTemplate.getForObject("http://PRODUCT-SERVICE/products/"+ productId, Product.class);
