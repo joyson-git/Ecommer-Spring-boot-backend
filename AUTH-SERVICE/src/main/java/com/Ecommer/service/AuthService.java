@@ -23,8 +23,14 @@ public class AuthService {
 
 
     public String signup(AuthUser user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword())
-        );
+
+        Optional<AuthUser> exisitingUser = authRepository.findByEmail(user.getEmail());
+
+        if(exisitingUser.isPresent()){
+            return " the user is already present";
+        }
+
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         authRepository.save(user);
 
         return " user register is  successful";
@@ -51,7 +57,7 @@ public class AuthService {
                 passwordEncoder.matches(user.getPassword(), existingUser.getPassword());
 
         if (passMatch) {
-            return jwtUtil.generateToken(existingUser.getEmail());
+            return jwtUtil.generateToken(existingUser.getEmail(), existingUser.getRole());
         }
 
         return "Invalid email or password";

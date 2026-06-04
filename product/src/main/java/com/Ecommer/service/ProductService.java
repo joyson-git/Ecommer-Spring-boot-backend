@@ -17,6 +17,8 @@ private final ProductRepository productRepository;
     }
 
     public Product addProduct(Product product){
+        System.out.print(" the request is hitting the  service product");
+
         return productRepository.save(product);
 }
 

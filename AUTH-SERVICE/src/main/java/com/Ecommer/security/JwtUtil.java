@@ -13,17 +13,17 @@ import java.util.Date;
 @Component
 public class JwtUtil {
 
-    private final String SECRET_KEY =
-            "mysecretkeymysecretkeymysecretkey123456789";
+    private final String SECRET_KEY =  "mysecretkey123456789012345678901234567890";
 
     private final Key key =
             Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
 
-    public String generateToken(String email) {
+    public String generateToken(String email,String role) {
 
         return Jwts.builder()
 
                 .setSubject(email)
+                .claim("role",role)
 
                 .setIssuedAt(new Date())
 

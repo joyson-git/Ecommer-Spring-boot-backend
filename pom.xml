@@ -5,7 +5,7 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<!-- ✅ FIXED Spring Boot version -->
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -18,9 +18,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
-	<!-- ✅ Modules -->
 	<modules>
-		<module>User</module>
 		<module>product</module>
 		<module>Eureka1</module>
         <module>API-GATEWAY</module>
@@ -32,12 +30,12 @@
         <module>PAYMENT-SERVICE</module>
     </modules>
 
-	<!-- ✅ Java -->
+
 	<properties>
 		<java.version>21</java.version>
 	</properties>
 
-	<!-- ✅ Spring Cloud (VERY IMPORTANT) -->
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>

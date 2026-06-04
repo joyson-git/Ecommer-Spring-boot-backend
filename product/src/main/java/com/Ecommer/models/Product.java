@@ -28,7 +28,6 @@ public class Product {
     }
 
 
-
     public String getId() {
         return id;
     }
