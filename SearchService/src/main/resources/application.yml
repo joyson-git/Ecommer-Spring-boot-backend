@@ -1,0 +1,14 @@
+server:
+  port: 9008  # <--- Added a space after the colon
+
+spring:
+  application:
+    name: SEARCH-SERVICE
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+
+  instance:
+    prefer-ip-address: true
