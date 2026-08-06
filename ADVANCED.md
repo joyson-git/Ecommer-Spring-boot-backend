@@ -242,26 +242,26 @@ services:
       - "27017:27017"
 
   eureka-server:
-    build: ./Eureka1
+    build: ./eureka-server
     ports:
       - "8761:8761"
 
   api-gateway:
-    build: ./API-GATEWAY
+    build: ./api-gateway
     ports:
       - "9002:9002"
     environment:
       - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
 
   auth-service:
-    build: ./AUTH-SERVICE
+    build: ./auth-service
     ports:
       - "9001:9001"
     environment:
       - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/authdb
 
   product-service:
-    build: ./product
+    build: ./product-service
     ports:
       - "9007:9007"
     environment:

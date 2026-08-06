@@ -76,10 +76,34 @@ All incoming HTTP requests pass through the **Spring Cloud API Gateway** on port
 | **Auth Service** | `9001` | `/auth/**` | `http://localhost:9002/auth` |
 | **Cart Service** | `9003` | `/cart/**` | `http://localhost:9002/cart` |
 | **Category Service** | `9004` | `/categories/**` | `http://localhost:9002/categories` |
+| **Notification Service** | `9005` | N/A (Kafka Event Consumer) | `http://localhost:9005` |
 | **Payment Service** | `9006` | `/payments/**` | `http://localhost:9002/payments` |
 | **Product Service** | `9007` | `/products/**` | `http://localhost:9002/products` |
 | **Search Service** | `9008` | `/search/**` | `http://localhost:9002/search` |
 | **Order Service** | `9009` | `/orders/**` | `http://localhost:9002/orders` |
+
+---
+
+## 🚦 Recommended Microservice Launch Sequence
+
+To ensure smooth service registration and inter-service communication, start the services in the following order:
+
+1. 🛰️ **Infrastructure Base**:
+   - `Eureka1` (Port 8761) — *Service Discovery Registry*
+   - `Kafka` (Port 9092) & `MongoDB` (Port 27017)
+2. 🌐 **API Gateway**:
+   - `API-GATEWAY` (Port 9002) — *Edge Routing*
+3. 🔑 **Core Domain Services**:
+   - `AUTH-SERVICE` (Port 9001)
+   - `Category` (Port 9004)
+   - `product` (Port 9007)
+4. 🛒 **Transactional Services**:
+   - `Cart` (Port 9003)
+   - `ORDER` (Port 9009)
+   - `PAYMENT-SERVICE` (Port 9006)
+5. 🔍 **Utility & Messaging Services**:
+   - `SearchService` (Port 9008)
+   - `Notification` (Port 9005)
 
 ---
 

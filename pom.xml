@@ -19,20 +19,21 @@
 	<packaging>pom</packaging>
 
 	<modules>
-		<module>product</module>
-		<module>Eureka1</module>
-        <module>API-GATEWAY</module>
-        <module>AUTH-SERVICE</module>
-        <module>Category</module>
-        <module>Cart</module>
-        <module>ORDER</module>
-        <module>SearchService</module>
-        <module>PAYMENT-SERVICE</module>
-    </modules>
+		<module>backend/eureka-server</module>
+		<module>backend/api-gateway</module>
+		<module>backend/auth-service</module>
+		<module>backend/category-service</module>
+		<module>backend/product-service</module>
+		<module>backend/cart-service</module>
+		<module>backend/order-service</module>
+		<module>backend/payment-service</module>
+		<module>backend/search-service</module>
+		<module>backend/notification-service</module>
+	</modules>
 
 
 	<properties>
-		<java.version>21</java.version>
+		<java.version>17</java.version>
 	</properties>
 
 

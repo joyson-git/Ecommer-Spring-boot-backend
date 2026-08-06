@@ -1,0 +1,17 @@
+[ Client / Frontend ]
+          |  (1. Place Order API Call)
+          v
+  [ Order Service ] ------ (2. Save Order to Database)
+          |
+          |  (3. Publish "OrderPlacedEvent" to Kafka Topic)
+          v
+   (( Kafka Broker ))
+   [ Topic: notification-topic ]
+          |
+          |  (4. Consume event asynchronously)
+          v
+[ Notification Service ]
+          |
+          |  (5. Parse Event & Send Email via SMTP)
+          v
+    [ Customer Email ]
