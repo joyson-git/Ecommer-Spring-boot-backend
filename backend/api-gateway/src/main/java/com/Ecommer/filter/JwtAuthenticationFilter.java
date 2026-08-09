@@ -72,9 +72,18 @@ public class JwtAuthenticationFilter implements GlobalFilter {
                 }
             }
         }
-     else if (path.startsWith("/categories") && "ADMIN".equals(role)) {
-            exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
-            return exchange.getResponse().setComplete();
+        else if (path.startsWith("/categories")) {
+            if ("GET".equalsIgnoreCase(method)) {
+                if (!"ADMIN".equals(role) && !"CUSTOMER".equals(role)) {
+                    exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
+                    return exchange.getResponse().setComplete();
+                }
+            } else {
+                if (!"ADMIN".equals(role)) {
+                    exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
+                    return exchange.getResponse().setComplete();
+                }
+            }
         }
        
         // CUSTOMER only APIs

@@ -1,0 +1,204 @@
+version: '3.8'
+
+services:
+  # -------------------------------------------------------------
+  # 1. DATABASE LAYER (MongoDB)
+  # -------------------------------------------------------------
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    environment:
+      - MONGO_INITDB_DATABASE=ecommer_db
+    networks:
+      - ecommer-net
+
+  # -------------------------------------------------------------
+  # 2. MESSAGING & DISCOVERY LAYER
+  # -------------------------------------------------------------
+  zookeeper:
+    image: confluentinc/cp-zookeeper:7.5.0
+    container_name: zookeeper
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - "2181:2181"
+    networks:
+      - ecommer-net
+
+  kafka:
+    image: confluentinc/cp-kafka:7.5.0
+    container_name: kafka
+    depends_on:
+      - zookeeper
+    ports:
+      - "9092:9092"
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: 'zookeeper:2181'
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_INTERNAL:PLAINTEXT
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://localhost:9092,PLAINTEXT_INTERNAL://kafka:29092
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+      KAFKA_TRANSACTION_STATE_LOG_MIN_ISR: 1
+      KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
+    networks:
+      - ecommer-net
+
+  eureka-server:
+    build: ./backend/eureka-server
+    container_name: eureka-server
+    ports:
+      - "8761:8761"
+    networks:
+      - ecommer-net
+
+  # -------------------------------------------------------------
+  # 3. BACKEND API GATEWAY
+  # -------------------------------------------------------------
+  api-gateway:
+    build: ./backend/api-gateway
+    container_name: api-gateway
+    depends_on:
+      - eureka-server
+    ports:
+      - "9002:9002"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - ecommer-net
+
+  # -------------------------------------------------------------
+  # 4. BACKEND DOMAIN MICROSERVICES
+  # -------------------------------------------------------------
+  auth-service:
+    build: ./backend/auth-service
+    container_name: auth-service
+    depends_on:
+      - eureka-server
+      - mongodb
+    ports:
+      - "9001:9001"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/auth_db
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - ecommer-net
+
+  category-service:
+    build: ./backend/category-service
+    container_name: category-service
+    depends_on:
+      - eureka-server
+      - mongodb
+    ports:
+      - "9004:9004"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/category_db
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - ecommer-net
+
+  product-service:
+    build: ./backend/product-service
+    container_name: product-service
+    depends_on:
+      - eureka-server
+      - mongodb
+    ports:
+      - "9007:9007"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/product_db
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - ecommer-net
+
+  cart-service:
+    build: ./backend/cart-service
+    container_name: cart-service
+    depends_on:
+      - eureka-server
+      - mongodb
+    ports:
+      - "9003:9003"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/cart_db
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - ecommer-net
+
+  order-service:
+    build: ./backend/order-service
+    container_name: order-service
+    depends_on:
+      - eureka-server
+      - mongodb
+      - kafka
+    ports:
+      - "9009:9009"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/order_db
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - ecommer-net
+
+  payment-service:
+    build: ./backend/payment-service
+    container_name: payment-service
+    depends_on:
+      - eureka-server
+      - mongodb
+    ports:
+      - "9006:9006"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/payment_db
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - ecommer-net
+
+  search-service:
+    build: ./backend/search-service
+    container_name: search-service
+    depends_on:
+      - eureka-server
+    ports:
+      - "9008:9008"
+    environment:
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - ecommer-net
+
+  notification-service:
+    build: ./backend/notification-service
+    container_name: notification-service
+    depends_on:
+      - eureka-server
+      - kafka
+    ports:
+      - "9005:9005"
+    environment:
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - ecommer-net
+
+  # -------------------------------------------------------------
+  # 5. FRONTEND WEB APPLICATION (Port 80)
+  # -------------------------------------------------------------
+  frontend:
+    image: nginx:alpine
+    container_name: frontend-web
+    ports:
+      - "80:80"
+    volumes:
+      - ./frontend:/usr/share/nginx/html
+    depends_on:
+      - api-gateway
+    networks:
+      - ecommer-net
+
+networks:
+  ecommer-net:
+    driver: bridge

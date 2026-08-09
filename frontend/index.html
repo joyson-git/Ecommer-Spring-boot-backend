@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NexusCart — Next-Gen E-Commerce Platform</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      <div class="logo">
+        <span class="logo-icon">⚡</span>
+        <span class="logo-text">Nexus<span class="logo-highlight">Cart</span></span>
+      </div>
+
+      <div class="search-bar-wrap">
+        <input type="text" id="searchInput" placeholder="Search smartphones, laptops, audio..." />
+        <button id="searchBtn" class="search-btn">🔍</button>
+      </div>
+
+      <div class="nav-actions">
+        <button id="cartTriggerBtn" class="nav-btn cart-btn">
+          🛒 <span class="nav-btn-label">Cart</span>
+          <span id="cartCountBadge" class="badge">0</span>
+        </button>
+        <button id="authModalBtn" class="nav-btn auth-btn">
+          👤 <span id="userAccountLabel">Login</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1 class="hero-title">Experience <span class="gradient-text">Next-Gen</span> Shopping</h1>
+    </div>
+  </section>
+
+  <!-- Category Pills Filter -->
+  <section class="categories-section">
+    <div class="container">
+      <div id="categoryPills" class="category-pills">
+        <button class="cat-pill active" data-category="all">✨ All Products</button>
+        <button class="cat-pill" data-category="Electronics">💻 Electronics</button>
+        <button class="cat-pill" data-category="Smartphones">📱 Smartphones</button>
+        <button class="cat-pill" data-category="Audio">🎧 Audio & Wearables</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Product Catalog Grid -->
+  <section id="productsSection" class="products-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Featured Products</h2>
+        <span id="productCountLabel" class="sub-label">Loading Products...</span>
+      </div>
+
+      <div id="productGrid" class="product-grid">
+        <!-- Dynamic Product Cards Injected Here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Shopping Cart Modal -->
+  <div id="cartModal" class="modal-backdrop">
+    <div class="modal-card cart-modal">
+      <div class="modal-header">
+        <h3>🛒 Your Shopping Cart</h3>
+        <button id="closeCartBtn" class="close-btn">&times;</button>
+      </div>
+      <div id="cartItemsList" class="cart-items-list">
+        <!-- Dynamic Cart Items -->
+      </div>
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">$0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Shipping & Taxes</span>
+          <span class="free-tag">FREE</span>
+        </div>
+        <div class="summary-row total-row">
+          <span>Total</span>
+          <span id="cartTotal">$0.00</span>
+        </div>
+        <button id="checkoutBtn" class="btn btn-primary btn-full">Proceed to Checkout 💳</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Auth Login / Signup Modal -->
+  <div id="authModal" class="modal-backdrop">
+    <div class="modal-card auth-modal">
+      <div class="modal-header">
+        <h3 id="authTitle">Sign In to NexusCart</h3>
+        <button id="closeAuthBtn" class="close-btn">&times;</button>
+      </div>
+
+      <form id="authForm" class="auth-form">
+        <div id="nameFieldGroup" class="form-group hidden">
+          <label for="authName">Full Name</label>
+          <input type="text" id="authName" placeholder="e.g. John Doe" />
+        </div>
+
+        <div class="form-group">
+          <label for="authEmail">Email Address</label>
+          <input type="email" id="authEmail" required placeholder="user@example.com" />
+        </div>
+
+        <div class="form-group">
+          <label for="authPassword">Password</label>
+          <input type="password" id="authPassword" required placeholder="••••••••" />
+        </div>
+
+        <div id="roleFieldGroup" class="form-group hidden">
+          <label for="authRole">Account Role</label>
+          <select id="authRole">
+            <option value="CUSTOMER">Customer Account</option>
+            <option value="ADMIN">Administrator</option>
+          </select>
+        </div>
+
+        <button type="submit" id="authSubmitBtn" class="btn btn-primary btn-full">Sign In 🗝️</button>
+      </form>
+
+      <div class="auth-toggle">
+        <span id="authToggleText">Don't have an account?</span>
+        <button id="authToggleBtn" class="link-btn">Create an account</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Notification Toast -->
+  <div id="toast" class="toast">Action notification message</div>
+
+  <script src="app.js"></script>
+</body>
+
+</html>

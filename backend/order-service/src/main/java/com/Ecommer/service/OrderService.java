@@ -42,7 +42,11 @@ public class OrderService {
         );
 
         // Publish to Kafka topic "notification-topic"
-        kafkaTemplate.send("notification-topic", event);
+        try {
+            kafkaTemplate.send("notification-topic", event);
+        } catch (Exception e) {
+            System.err.println("Kafka offline or error publishing event: " + e.getMessage());
+        }
 
         return "Order Placed Successfully";
     }
