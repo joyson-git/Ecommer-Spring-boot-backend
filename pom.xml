@@ -29,6 +29,7 @@
 		<module>backend/payment-service</module>
 		<module>backend/search-service</module>
 		<module>backend/notification-service</module>
+		<module>backend/inventory-services</module>
 	</modules>
 
 

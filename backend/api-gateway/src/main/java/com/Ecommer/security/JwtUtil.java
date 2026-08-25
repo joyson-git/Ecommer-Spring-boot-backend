@@ -13,9 +13,6 @@ import java.security.Key;
 @Component
 public class JwtUtil {
 
-
-    //revceive jwt token ,check it is valid ,extract the email and exract role
-
     private final String SECRET_KEY =  "mysecretkey123456789012345678901234567890";
 
     private Key getSigningKey() {

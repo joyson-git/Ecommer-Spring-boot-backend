@@ -18,28 +18,27 @@ public class CartController {
     private final CartService cartService;
 
 
-    private static final Logger logger = LoggerFactory.getLogger(CartController.class);
+//    GET    /cart
+//    POST   /cart/items
+//    PUT    /cart/items/{productId}
+//    DELETE /cart/items/{productId}
+//    DELETE /cart
+
 
     public CartController(CartService cartService) {
         this.cartService = cartService;
     }
 
+    //    POST   /cart/items
     @PostMapping("/add")
     public String AddtoCart(@RequestBody Cart cart) {
         return cartService.addToCart(cart);
     }
 
 
-//    @GetMapping("/{userId}")
-//    public List<CartIt> getUserCart(@PathVariable String userId) {
-//
-//
-//        return cartService.getUserCart(userId);
-//    }
-
+    //  GET  /cart  @GetMapping("/{userId}")
     @GetMapping("/{userId}")
     public List<CartItemResponse> getUserCart(@PathVariable String userId){
-        logger.info("Fetching FULL cart details (with images via DTO) for userId: {}", userId);
         return cartService.getFullCartDetails(userId);
     }
 
@@ -50,6 +49,7 @@ public class CartController {
         return cartService.getProduct(id);
     }
 
+    //    DELETE /cart
     @DeleteMapping("/{id}")
     public String removeProductFromCart(@PathVariable String id) {
         return cartService.deleteProduct(id);

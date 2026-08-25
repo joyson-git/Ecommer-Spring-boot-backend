@@ -22,22 +22,20 @@ public class CartService {
         this.restTemplate =restTemplate;
     }
 
-public  String addToCart(Cart cart){
+    public  String addToCart(Cart cart){
         cartRepository.save(cart);
         System.out.print(cart +"  ");
         return " the project is add";
 }
 
-    public List<Cart> getUserCart(String userId) {
 
+    public List<Cart> getUserCart(String userId) {
         return cartRepository.findByUserId(userId);
     }
 
     public Product getProduct(String productId){
         return restTemplate.getForObject("http://PRODUCT-SERVICE/products/"+ productId, Product.class);
     }
-
-
 
     public String deleteProduct(String id) {
         cartRepository.deleteById(id);

@@ -38,23 +38,6 @@ public class SearchService {
         }catch (Exception e){
             System.out.println("Error calling Product Service: "+e.getMessage());
         }
-
-
-//        List<Product> products = response.getBody();
-//
-//        List<Product> result = new ArrayList<>();
-
-//        if (products != null) {
-//
-//            for (Product product : products) {
-//
-//                if (product.getName().toLowerCase()
-//                        .contains(keyword.toLowerCase())) {
-//
-//                    result.add(product);
-//                }
-//            }
-//        }
         return Collections.emptyList();
     }
 }

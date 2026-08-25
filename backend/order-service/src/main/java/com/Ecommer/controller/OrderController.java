@@ -5,6 +5,8 @@ import com.Ecommer.dto.Payment;
 import com.Ecommer.dto.Product;
 import com.Ecommer.model.Order;
 import com.Ecommer.service.OrderService;
+import org.apache.catalina.connector.Response;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -13,23 +15,35 @@ import java.util.List;
 @RequestMapping("/orders")
 public class OrderController {
 
+
+//    Create order
+//    Validate cart
+//    Check inventory
+//    Reserve stock
+//    Maintain order status
+//    Cancel order
+//    Track order
+
+
     private  final OrderService orderService;
 
     public  OrderController(OrderService orderService){
         this.orderService= orderService;
     }
 
+   // POST /orders
     @PostMapping("/place")
     public String placeOrder(@RequestBody Order order) {
         return orderService.placeOrder(order);
     }
 
+//    GET  /orders/{id}
     @GetMapping("/{userId}")
     public List<Order> getUserOrders(@PathVariable String userId) {
         return orderService.getUserOrders(userId);
     }
 
-
+//GET  /orders/my-orders
     @GetMapping("/cart/{userId}")
    public List<Cart> getCartItem(@PathVariable String userId){
         return orderService.getCartItems(userId);
@@ -46,5 +60,11 @@ return orderService.getProduct(id);
 public Payment makePayment(@PathVariable String orderId,@PathVariable Double amount){
      return orderService.makePayment(orderId, amount);
 }
+
+    @PutMapping("/orders/{orderId}/cancel")
+    public ResponseEntity<String> cancelOrder(@PathVariable String orderId){
+        String response = orderService.cancelOrder(orderId);
+        return ResponseEntity.ok(response);
+    }
 
 }

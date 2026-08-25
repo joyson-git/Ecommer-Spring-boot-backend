@@ -1,5 +1,7 @@
 package com.Ecommer.service;
 
+
+import com.Ecommer.entity.Role;
 import com.Ecommer.model.AuthUser;
 import com.Ecommer.repository.AuthRepository;
 import com.Ecommer.security.JwtUtil;
@@ -15,6 +17,7 @@ public class AuthService {
     private final BCryptPasswordEncoder passwordEncoder;
     private final JwtUtil jwtUtil;
 
+
     public AuthService(AuthRepository authRepository, BCryptPasswordEncoder passwordEncoder, JwtUtil jwtUtil) {
         this.authRepository = authRepository;
         this.passwordEncoder = passwordEncoder;
@@ -23,43 +26,42 @@ public class AuthService {
 
 
     public String signup(AuthUser user) {
+        Optional<AuthUser> existingUser = authRepository.findByEmail(user.getEmail());
 
-        Optional<AuthUser> exisitingUser = authRepository.findByEmail(user.getEmail());
-
-        if(exisitingUser.isPresent()){
+        if (existingUser.isPresent()) {
             return " the user is already present";
         }
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        String hashPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(hashPassword);
+
+        user.setRole(Role.CUSTOMER);
+
         authRepository.save(user);
 
-        return " user register is  successful";
+        return " User registered successfully";
+
     }
+
 
 
     public String login(AuthUser user) {
-
-        System.out.println("Login request email: " + user.getEmail());
-
         Optional<AuthUser> dbUser = authRepository.findByEmail(user.getEmail());
-
         if (dbUser.isEmpty()) {
-            System.out.println("User not found in DB");
             return "Invalid email or password";
         }
-
         AuthUser existingUser = dbUser.get();
 
-        System.out.println("DB password: " + existingUser.getPassword());
-        System.out.println("Entered password: " + user.getPassword());
-
-        boolean passMatch =
-                passwordEncoder.matches(user.getPassword(), existingUser.getPassword());
+        boolean passMatch = passwordEncoder.matches(user.getPassword(), existingUser.getPassword());
 
         if (passMatch) {
-            return jwtUtil.generateToken(existingUser.getEmail(), existingUser.getRole());
+  String roleStr = "USER";
+  if(existingUser.getRole()!=null){
+      roleStr = existingUser.getRole().toString();
+  }
+return jwtUtil.generateToken(existingUser.getEmail(),roleStr);
         }
-
         return "Invalid email or password";
     }
+
 }

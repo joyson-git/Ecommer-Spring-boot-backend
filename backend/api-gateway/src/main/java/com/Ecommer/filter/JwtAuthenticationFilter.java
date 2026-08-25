@@ -10,6 +10,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Mono;
 
+import java.util.Arrays;
+
 @Component
 public class JwtAuthenticationFilter implements GlobalFilter {
 
@@ -20,79 +22,90 @@ public class JwtAuthenticationFilter implements GlobalFilter {
     public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
 
         String path = exchange.getRequest().getURI().getPath();
-        System.out.println("Path = " + path);
+        String method = exchange.getRequest().getMethod().name();
 
-        // Public APIs
+        // 1. Allow Public APIs
         if (path.startsWith("/auth")) {
             return chain.filter(exchange);
         }
 
-        // Get Authorization Header
+        // 2. Validate Authorization Header
         String authHeader = exchange.getRequest()
                 .getHeaders()
                 .getFirst(HttpHeaders.AUTHORIZATION);
 
-        System.out.println("Auth Header = " + authHeader);
-
-        // Check Header
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-            return exchange.getResponse().setComplete();
+            return unauthorized(exchange);
         }
 
-        // Extract Token
-        String token = authHeader.substring(7);
-        System.out.println("Token " + token);
-
-        boolean valid = jwtUtil.validateToken(token);
-        System.out.println("Valid Token = " + valid);
-
-        // Validate Token
-        if (!valid) {
-            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-            return exchange.getResponse().setComplete();
+        // 3. Extract and Validate Token
+        String token = authHeader.substring(7).trim();
+        if (!jwtUtil.validateToken(token)) {
+            return unauthorized(exchange);
         }
 
-        // Extract Role
+        // 4. Extract User Role
         String role = jwtUtil.extractRole(token);
-        System.out.println("Role = " + role);
 
-        String method = exchange.getRequest().getMethod().name();
-
+        // 5. Role-Based Route Protection
         if (path.startsWith("/products")) {
             if ("GET".equalsIgnoreCase(method)) {
-                if (!"ADMIN".equals(role) && !"CUSTOMER".equals(role)) {
-                    exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
-                    return exchange.getResponse().setComplete();
+                if (!hasRole(role, "CUSTOMER", "STORE_ADMIN", "ADMIN")) {
+                    return forbidden(exchange);
                 }
             } else {
-                if (!"ADMIN".equals(role)) {
-                    exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
-                    return exchange.getResponse().setComplete();
+                if (!hasRole(role, "STORE_ADMIN", "ADMIN")) {
+                    return forbidden(exchange);
                 }
             }
         }
         else if (path.startsWith("/categories")) {
             if ("GET".equalsIgnoreCase(method)) {
-                if (!"ADMIN".equals(role) && !"CUSTOMER".equals(role)) {
-                    exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
-                    return exchange.getResponse().setComplete();
+                if (!hasRole(role, "CUSTOMER", "STORE_ADMIN", "ADMIN")) {
+                    return forbidden(exchange);
                 }
             } else {
-                if (!"ADMIN".equals(role)) {
-                    exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
-                    return exchange.getResponse().setComplete();
+                if (!hasRole(role, "STORE_ADMIN", "ADMIN")) {
+                    return forbidden(exchange);
                 }
             }
         }
-       
-        // CUSTOMER only APIs
-        if ((path.startsWith("/cart") || path.startsWith("/orders") || path.startsWith("/payments"))
-                && !"CUSTOMER".equals(role) ) {
-            exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
-            return exchange.getResponse().setComplete();
+        else if (path.startsWith("/cart") || path.startsWith("/payments")) {
+            if (!"CUSTOMER".equals(role)) {
+                return forbidden(exchange);
+            }
+        }
+        else if (path.startsWith("/delivery")) {
+            if (!hasRole(role, "DELIVERY_PARTNER", "ADMIN")) {
+                return forbidden(exchange);
+            }
+        }
+        else if (path.startsWith("/admin")) {
+            if (!"SUPER_ADMIN".equals(role)) {
+                return forbidden(exchange);
+            }
         }
 
         return chain.filter(exchange);
+    }
+
+    // Helper: Check if user role exists in allowed list
+    private boolean hasRole(String userRole, String... allowedRoles) {
+        if (userRole == null) {
+            return false;
+        }
+        return Arrays.asList(allowedRoles).contains(userRole);
+    }
+
+    // Helper: 401 Unauthorized Response
+    private Mono<Void> unauthorized(ServerWebExchange exchange) {
+        exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+        return exchange.getResponse().setComplete();
+    }
+
+    // Helper: 403 Forbidden Response
+    private Mono<Void> forbidden(ServerWebExchange exchange) {
+        exchange.getResponse().setStatusCode(HttpStatus.FORBIDDEN);
+        return exchange.getResponse().setComplete();
     }
 }

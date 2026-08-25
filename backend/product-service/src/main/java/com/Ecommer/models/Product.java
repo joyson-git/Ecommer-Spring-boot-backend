@@ -1,5 +1,6 @@
 package com.Ecommer.models;
 
+import com.Ecommer.entity.ProductStatus;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -11,25 +12,41 @@ public class Product {
 
     private String name;
     private String description;
+    private String category;
+    private String brand;
     private double price;
-    private String categoryId;
-    private int stock;
-    private String ImageUrl;
+    private String image;
+    private String unit;
+    private ProductStatus status;
 
-    public Product() {}
+    // No-arg constructor
+    public Product() {
+    }
 
-    public Product(String id, String name, String description,
-                   double price, String categoryId, int stock, String ImageUrl) {
+    // All-args constructor
+    public Product(
+            String id,
+            String name,
+            String description,
+            String category,
+            String brand,
+            double price,
+            String image,
+            String unit,
+            ProductStatus status) {
+
         this.id = id;
         this.name = name;
         this.description = description;
+        this.category = category;
+        this.brand = brand;
         this.price = price;
-        this.categoryId = categoryId;
-        this.stock = stock;
-        this.ImageUrl = ImageUrl;
+        this.image = image;
+        this.unit = unit;
+        this.status = status;
     }
 
-
+    // ID
     public String getId() {
         return id;
     }
@@ -38,6 +55,7 @@ public class Product {
         this.id = id;
     }
 
+    // Name
     public String getName() {
         return name;
     }
@@ -46,6 +64,7 @@ public class Product {
         this.name = name;
     }
 
+    // Description
     public String getDescription() {
         return description;
     }
@@ -54,6 +73,25 @@ public class Product {
         this.description = description;
     }
 
+    // Category
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    // Brand
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    // Price
     public double getPrice() {
         return price;
     }
@@ -62,26 +100,30 @@ public class Product {
         this.price = price;
     }
 
-    public String getCategoryId() {
-        return categoryId;
+    // Image
+    public String getImage() {
+        return image;
     }
 
-    public void setCategoryId(String categoryId) {
-        this.categoryId = categoryId;
+    public void setImage(String image) {
+        this.image = image;
     }
 
-    public int getStock() {
-        return stock;
+    // Unit
+    public String getUnit() {
+        return unit;
     }
 
-    public void setStock(int stock) {
-        this.stock = stock;
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
-    public  String getImageUrl(){return  ImageUrl;}
-
-    public  void setImageUrl(String ImageUrl){
-        this.ImageUrl = ImageUrl;
+    // Status
+    public ProductStatus getStatus() {
+        return status;
     }
 
+    public void setStatus(ProductStatus status) {
+        this.status = status;
+    }
 }

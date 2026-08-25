@@ -6,6 +6,7 @@ import com.Ecommer.dto.Product;
 import com.Ecommer.event.OrderPlacedEvent;
 import com.Ecommer.model.Order;
 import com.Ecommer.repositary.OrderRepository;
+import org.apache.catalina.User;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.client.RestTemplate;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderService {
@@ -55,6 +57,17 @@ public class OrderService {
         return orderRepository.findByUserId(userId);
     }
 
+    public String cancelOrder(String orderId){
+        Optional<Order> orderOptional = orderRepository.findById(orderId);
+        if(orderOptional.isPresent()){
+            Order order = orderOptional.get();
+            order.setStatus("Cancel");
+            orderRepository.save(order);
+            return  "Order Cancelled Successfully";
+        }
+        return "Order not found with ID: " + orderId;
+    }
+
     public List<Cart> getCartItems(String userId) {
         ResponseEntity<List<Cart>> response =
                 restTemplate.exchange(
@@ -82,4 +95,9 @@ public class OrderService {
                 Payment.class
         );
     }
+
+
+
+
+
 }
