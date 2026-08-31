@@ -1,6 +1,6 @@
-# ⚡ NexusCart - Enterprise E-Commerce Microservices Platform
+# ⚡ MAch - Enterprise E-Commerce Microservices Platform
 
-NexusCart is a full-stack, enterprise-grade **E-Commerce Product Software Solution** engineered with a distributed **Spring Boot 3 & Spring Cloud Microservices Architecture** on the backend and a modern **Glassmorphic Single-Page Application (SPA)** on the frontend.
+MAch t is a full-stack, enterprise-grade **E-Commerce Product Software Solution** engineered with a distributed **Spring Boot 3 & Spring Cloud Microservices Architecture** on the backend and a modern **Glassmorphic Single-Page Application (SPA)** on the frontend.
 
 ---
 
