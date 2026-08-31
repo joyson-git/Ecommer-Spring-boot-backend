@@ -16,13 +16,19 @@ import java.util.List;
 public class OrderController {
 
 
-//    Create order
+
 //    Validate cart
 //    Check inventory
 //    Reserve stock
 //    Maintain order status
-//    Cancel order
 //    Track order
+
+
+//    POST /orders
+//    GET  /orders/{id}
+//    GET  /orders/my-orders
+//    PUT  /orders/{id}/cancel
+
 
 
     private  final OrderService orderService;
@@ -31,36 +37,45 @@ public class OrderController {
         this.orderService= orderService;
     }
 
-   // POST /orders
+   // Creat the lab order
     @PostMapping("/place")
     public String placeOrder(@RequestBody Order order) {
         return orderService.placeOrder(order);
     }
 
-//    GET  /orders/{id}
+
+
+    // Get all orders for a user
     @GetMapping("/{userId}")
     public List<Order> getUserOrders(@PathVariable String userId) {
         return orderService.getUserOrders(userId);
     }
 
-//GET  /orders/my-orders
+
+
+    // Get cart items for a user
     @GetMapping("/cart/{userId}")
    public List<Cart> getCartItem(@PathVariable String userId){
         return orderService.getCartItems(userId);
 }
 
 
+
+    // Get product
 @GetMapping("/product/{id}")
  public Product getProduct(@PathVariable String id){
 return orderService.getProduct(id);
  }
 
 
+ // make the payment
  @GetMapping("/payment/{orderId}/{amount}")
-public Payment makePayment(@PathVariable String orderId,@PathVariable Double amount){
+public Payment makePayment(@PathVariable String orderId,@RequestParam Double amount){
      return orderService.makePayment(orderId, amount);
 }
 
+
+    // Cancel order
     @PutMapping("/orders/{orderId}/cancel")
     public ResponseEntity<String> cancelOrder(@PathVariable String orderId){
         String response = orderService.cancelOrder(orderId);

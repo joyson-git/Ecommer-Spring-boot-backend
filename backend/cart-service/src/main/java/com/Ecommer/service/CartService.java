@@ -19,7 +19,7 @@ public class CartService {
 
     public  CartService(CartRepository cartRepository,RestTemplate restTemplate){
         this.cartRepository = cartRepository;
-        this.restTemplate =restTemplate;
+        this.restTemplate = restTemplate;
     }
 
     public  String addToCart(Cart cart){
@@ -74,4 +74,28 @@ public class CartService {
         // 6. Send the list of packages back to the Controller
         return finalResponse;
     }
+
+
+    public String deleteAllProduct(String userId){
+        List<Cart>  cartItems = cartRepository.findByUserId(userId);
+        cartRepository.deleteAll(cartItems);
+        return "Cart delete successfull";
+    }
+
+public String updateCartItem(String productId ,Cart cart){
+        List<Cart> cartItem = cartRepository.findByProductId(productId);
+
+        if(cartItem.isEmpty()){
+            return "Product no item found";
+        }
+        Cart item = cartItem.get(0);
+        item.setQuantity(cart.getQuantity());
+        cartRepository.save(item);
+        return "Cart item updated successfully";
+}
+
+
+
+
+
 }

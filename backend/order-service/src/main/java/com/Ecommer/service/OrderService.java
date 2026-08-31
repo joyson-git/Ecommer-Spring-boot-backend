@@ -6,7 +6,6 @@ import com.Ecommer.dto.Product;
 import com.Ecommer.event.OrderPlacedEvent;
 import com.Ecommer.model.Order;
 import com.Ecommer.repositary.OrderRepository;
-import org.apache.catalina.User;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
@@ -32,7 +31,10 @@ public class OrderService {
         this.kafkaTemplate = kafkaTemplate;
     }
 
+
+    // Creat the lab order
     public String placeOrder(Order order) {
+
         order.setStatus("Placed");
         orderRepository.save(order);
 
@@ -53,10 +55,13 @@ public class OrderService {
         return "Order Placed Successfully";
     }
 
+    // Get all orders for a user
     public List<Order> getUserOrders(String userId) {
         return orderRepository.findByUserId(userId);
     }
 
+
+    //cancel the order
     public String cancelOrder(String orderId){
         Optional<Order> orderOptional = orderRepository.findById(orderId);
         if(orderOptional.isPresent()){
@@ -68,6 +73,8 @@ public class OrderService {
         return "Order not found with ID: " + orderId;
     }
 
+
+    // Get cart items for a user
     public List<Cart> getCartItems(String userId) {
         ResponseEntity<List<Cart>> response =
                 restTemplate.exchange(
@@ -79,11 +86,13 @@ public class OrderService {
 
         return response.getBody();
     }
-
+    // Get product
     public Product getProduct(String productId) {
         return restTemplate.getForObject("http://PRODUCT-SERVICE/products/" + productId, Product.class);
     }
 
+
+    // make the payment
     public Payment makePayment(String orderId, Double amount) {
         Payment payment = new Payment();
         payment.setOrderId(orderId);

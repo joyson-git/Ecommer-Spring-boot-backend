@@ -239,7 +239,7 @@ services:
   mongodb:
     image: mongo:latest
     ports:
-      - "27017:27017"
+      - "27018:27017"
 
   eureka-server:
     build: ./eureka-server

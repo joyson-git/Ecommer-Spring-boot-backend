@@ -45,14 +45,14 @@ public class InventoryController {
     }
 
 
-    //4 stock release
+    // 4. Stock Release
     @PostMapping("/release")
-    public ResponseEntity<String> releaseStock(@RequestParam String storedId, @RequestParam String productId, @RequestParam int amount) {
-        boolean released = inventoryService.releaseStock(storedId,productId,amount);
-if(released){
-    return ResponseEntity.ok(" The Successful");
-}
-return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed to release stock: Item not found.");
+    public ResponseEntity<String> releaseStock(@RequestParam String storeId, @RequestParam String productId, @RequestParam int amount) {
+        boolean released = inventoryService.releaseStock(storeId, productId, amount);
+        if (released) {
+            return ResponseEntity.ok("Stock release successful");
+        }
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Failed to release stock: Item not found.");
     }
 
 // 5. Update Stock Quantity

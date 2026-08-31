@@ -2,17 +2,17 @@ package com.Ecommer.service;
 
 import com.Ecommer.model.Inventory;
 import com.Ecommer.repositary.InventoryRepositary;
+import org.springframework.stereotype.Service;
 
-import javax.swing.text.html.Option;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Service
 public class InventoryService {
 
     private final InventoryRepositary inventoryRepositary;
-
 
     public InventoryService(InventoryRepositary inventoryRepositary) {
         this.inventoryRepositary = inventoryRepositary;
@@ -30,35 +30,42 @@ public class InventoryService {
                 .orElse(0);
     }
 
-    //3. Stock Reservation: Lock quantity when an order is placed
+    // 3. Stock Reservation: Lock quantity when an order is placed
     public boolean reserverStock(String storeId, String productId, int amount) {
-        Optional<Inventory> opt = inventoryRepositary.findByStoreIdAndProductId(storeId,productId);
-        if(opt.isPresent()){
+        Optional<Inventory> opt = inventoryRepositary.findByStoreIdAndProductId(storeId, productId);
+        if (opt.isPresent()) {
             Inventory item = opt.get();
-            if(item.getAvailableQuantity()>=amount)
-           item.setReserveQuantity(item.getReserveQuantity()+ amount);
-            item.setAvailableQuantity(item.getQuantity()-item.getReserveQuantity());
-            item.setUpdatedAt(LocalDateTime.now());
-            inventoryRepositary.save(item);
-            return  true;
+            int currentAvailable = item.getAvailableQuantity() != null ? item.getAvailableQuantity() : 0;
+            int currentReserve = item.getReserveQuantity() != null ? item.getReserveQuantity() : 0;
+            int totalQuantity = item.getQuantity() != null ? item.getQuantity() : 0;
+
+            if (currentAvailable >= amount) {
+                item.setReserveQuantity(currentReserve + amount);
+                item.setAvailableQuantity(totalQuantity - item.getReserveQuantity());
+                item.setUpdatedAt(LocalDateTime.now());
+                inventoryRepositary.save(item);
+                return true;
+            }
         }
         return false;
     }
 
-// 4. Stock Release: Free up reserved units on order cancellation/timeout
-public  boolean releaseStock (String storeId,String productId,int amount){
-    Optional<Inventory> opt = inventoryRepositary.findByStoreIdAndProductId(storeId,productId);
-    if(opt.isPresent()){
-        Inventory item = opt.get();
-        int updatedReserve = Math.max(0, item.getReserveQuantity() -amount);
-        item.setReserveQuantity(updatedReserve);
-        item.setAvailableQuantity(item.getQuantity() - updatedReserve);
-        item.setUpdatedAt(LocalDateTime.now());
-        inventoryRepositary.save(item);
-        return true;
+    // 4. Stock Release: Free up reserved units on order cancellation/timeout
+    public boolean releaseStock(String storeId, String productId, int amount) {
+        Optional<Inventory> opt = inventoryRepositary.findByStoreIdAndProductId(storeId, productId);
+        if (opt.isPresent()) {
+            Inventory item = opt.get();
+            int currentReserve = item.getReserveQuantity() != null ? item.getReserveQuantity() : 0;
+            int totalQuantity = item.getQuantity() != null ? item.getQuantity() : 0;
+            int updatedReserve = Math.max(0, currentReserve - amount);
+            item.setReserveQuantity(updatedReserve);
+            item.setAvailableQuantity(totalQuantity - updatedReserve);
+            item.setUpdatedAt(LocalDateTime.now());
+            inventoryRepositary.save(item);
+            return true;
+        }
+        return false;
     }
-return false;
-}
 
     // 5. Stock Updates: Restock or adjust base physical quantity
     public Inventory updateStockQuantity(String storeId, String productId, int newQuantity) {

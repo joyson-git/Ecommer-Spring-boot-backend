@@ -59,7 +59,7 @@ graph TD
 | :--- | :--- |
 | **Backend Framework** | Java 21, Spring Boot 3.2.5, Spring Cloud 2023.0.1 |
 | **Microservice Cloud** | Spring Cloud Gateway, Netflix Eureka Discovery Server, OpenFeign Clients |
-| **Database** | MongoDB (NoSQL) running on `localhost:27017` |
+| **Database** | MongoDB (NoSQL) running on `localhost:27018` |
 | **Frontend UI** | HTML5, Vanilla CSS3 (Glassmorphism & CSS Variables), ES6+ JavaScript |
 | **Build & Tooling** | Apache Maven 3.x, Postman, Git |
 
@@ -90,7 +90,7 @@ To ensure smooth service registration and inter-service communication, start the
 
 1. 🛰️ **Infrastructure Base**:
    - `Eureka1` (Port 8761) — *Service Discovery Registry*
-   - `Kafka` (Port 9092) & `MongoDB` (Port 27017)
+   - `Kafka` (Port 9092) & `MongoDB` (Port 27018)
 2. 🌐 **API Gateway**:
    - `API-GATEWAY` (Port 9002) — *Edge Routing*
 3. 🔑 **Core Domain Services**:

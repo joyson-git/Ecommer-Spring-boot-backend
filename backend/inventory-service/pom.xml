@@ -9,10 +9,10 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>inventory-services</artifactId>
+    <artifactId>inventory-service</artifactId>
     <packaging>jar</packaging>
 
-    <name>inventory-services</name>
+    <name>inventory-service</name>
     <url>http://maven.apache.org</url>
 
     <properties>
