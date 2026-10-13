@@ -25,7 +25,9 @@ public class OrderService {
     private final KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate;
 
     // Fixed constructor to include KafkaTemplate injection
-    public OrderService(OrderRepository orderRepository, RestTemplate restTemplate, KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate) {
+    public OrderService(OrderRepository orderRepository,
+                        RestTemplate restTemplate,
+                        KafkaTemplate<String, OrderPlacedEvent> kafkaTemplate) {
         this.orderRepository = orderRepository;
         this.restTemplate = restTemplate;
         this.kafkaTemplate = kafkaTemplate;
@@ -38,16 +40,16 @@ public class OrderService {
         order.setStatus("Placed");
         orderRepository.save(order);
 
-        OrderPlacedEvent event = new OrderPlacedEvent(
-                order.getOrderNumber(),
-                order.getCustomerEmail(),
-                order.getCustomerName(),
-                BigDecimal.valueOf(order.getTotalPrice())
-        );
+//        OrderPlacedEvent event = new OrderPlacedEvent(
+//                order.getOrderNumber(),
+//                order.getCustomerEmail(),
+//                order.getCustomerName(),
+//                BigDecimal.valueOf(order.getTotalPrice())
+//        );
 
         // Publish to Kafka topic "notification-topic"
         try {
-            kafkaTemplate.send("notification-topic", event);
+//            kafkaTemplate.send("notification-topic", event);
         } catch (Exception e) {
             System.err.println("Kafka offline or error publishing event: " + e.getMessage());
         }
@@ -77,15 +79,14 @@ public class OrderService {
     // Get cart items for a user
     public List<Cart> getCartItems(String userId) {
         ResponseEntity<List<Cart>> response =
-                restTemplate.exchange(
-                        "http://CART-SERVICE/cart/" + userId,
-                        HttpMethod.GET,
-                        null,
+                restTemplate.exchange("http://CART-SERVICE/cart/" + userId, HttpMethod.GET, null,
                         new ParameterizedTypeReference<List<Cart>>() {}
                 );
 
         return response.getBody();
     }
+
+
     // Get product
     public Product getProduct(String productId) {
         return restTemplate.getForObject("http://PRODUCT-SERVICE/products/" + productId, Product.class);

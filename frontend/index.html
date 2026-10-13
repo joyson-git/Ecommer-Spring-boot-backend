@@ -1,137 +1,1184 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NexusCart — Next-Gen E-Commerce Platform</title>
+  <title>Mach Enterprise — Next-Gen Microservices E-Commerce</title>
+  <meta name="description" content="Enterprise-grade cloud e-commerce platform built with Spring Boot 3, Spring Cloud Gateway, Kafka, and ultra-modern glassmorphic UI.">
+  
+  <!-- Modern Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="nav-container">
-      <div class="logo">
-        <span class="logo-icon">⚡</span>
-        <span class="logo-text">Nexus<span class="logo-highlight">Cart</span></span>
-      </div>
+  <!-- Ambient Glow Background Orbs -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+  <div class="ambient-glow glow-3"></div>
 
-      <div class="search-bar-wrap">
-        <input type="text" id="searchInput" placeholder="Search smartphones, laptops, audio..." />
-        <button id="searchBtn" class="search-btn">🔍</button>
-      </div>
-
-      <div class="nav-actions">
-        <button id="cartTriggerBtn" class="nav-btn cart-btn">
-          🛒 <span class="nav-btn-label">Cart</span>
-          <span id="cartCountBadge" class="badge">0</span>
-        </button>
-        <button id="authModalBtn" class="nav-btn auth-btn">
-          👤 <span id="userAccountLabel">Login</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-content">
-      <h1 class="hero-title">Experience <span class="gradient-text">Next-Gen</span> Shopping</h1>
-    </div>
-  </section>
-
-  <!-- Category Pills Filter -->
-  <section class="categories-section">
-    <div class="container">
-      <div id="categoryPills" class="category-pills">
-        <button class="cat-pill active" data-category="all">✨ All Products</button>
-        <button class="cat-pill" data-category="Electronics">💻 Electronics</button>
-        <button class="cat-pill" data-category="Smartphones">📱 Smartphones</button>
-        <button class="cat-pill" data-category="Audio">🎧 Audio & Wearables</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- Product Catalog Grid -->
-  <section id="productsSection" class="products-section">
-    <div class="container">
-      <div class="section-header">
-        <h2>Featured Products</h2>
-        <span id="productCountLabel" class="sub-label">Loading Products...</span>
-      </div>
-
-      <div id="productGrid" class="product-grid">
-        <!-- Dynamic Product Cards Injected Here -->
-      </div>
-    </div>
-  </section>
-
-  <!-- Shopping Cart Modal -->
-  <div id="cartModal" class="modal-backdrop">
-    <div class="modal-card cart-modal">
-      <div class="modal-header">
-        <h3>🛒 Your Shopping Cart</h3>
-        <button id="closeCartBtn" class="close-btn">&times;</button>
-      </div>
-      <div id="cartItemsList" class="cart-items-list">
-        <!-- Dynamic Cart Items -->
-      </div>
-      <div class="cart-summary">
-        <div class="summary-row">
-          <span>Subtotal</span>
-          <span id="cartSubtotal">$0.00</span>
-        </div>
-        <div class="summary-row">
-          <span>Shipping & Taxes</span>
-          <span class="free-tag">FREE</span>
-        </div>
-        <div class="summary-row total-row">
-          <span>Total</span>
-          <span id="cartTotal">$0.00</span>
-        </div>
-        <button id="checkoutBtn" class="btn btn-primary btn-full">Proceed to Checkout 💳</button>
+  <!-- Announcement Bar Ticker -->
+  <div class="announcement-bar">
+    <div class="ticker-wrap">
+      <div class="ticker-move">
+        <span class="ticker-item">⚡ <strong>Mach Cloud v2.5</strong>: Spring Boot 3.2 + Kafka Event Streams + Eureka Discovery</span>
+        <span class="ticker-item">🔥 <strong>SPRING TECH FEST</strong>: Use coupon code <code class="promo-code-badge">MACH20</code> for 20% OFF!</span>
+        <span class="ticker-item">🚀 <strong>Zero Latency Caching</strong>: Redis-optimized product catalogs & instant cart sync</span>
+        <span class="ticker-item">🛡️ <strong>Enterprise Security</strong>: Distributed Spring Security & JWT Token Verification</span>
+        <span class="ticker-item">📦 <strong>Free Global Shipping</strong> on orders exceeding $500</span>
       </div>
     </div>
   </div>
 
-  <!-- Auth Login / Signup Modal -->
+  <!-- Primary Sticky Navbar -->
+  <header class="navbar">
+    <div class="nav-container">
+      
+      <!-- Brand Logo -->
+      <div class="logo" id="brandLogoBtn" title="Back to Home">
+        <div class="logo-icon-pulse">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+          </svg>
+        </div>
+        <div class="logo-text-group">
+          <span class="logo-title">Nexus<span class="logo-accent">Cart</span></span>
+          <span class="logo-sub">Enterprise Microservices</span>
+        </div>
+      </div>
+
+      <!-- Real-time Gateway Health Pill -->
+      <button class="gateway-status-pill" id="gatewayStatusBtn" title="Click to view Microservices Health Monitor">
+        <span class="status-pulse-dot" id="gatewayPulseDot"></span>
+        <span id="gatewayStatusText">Gateway: Standalone Demo</span>
+      </button>
+
+      <!-- Global Autocomplete Search Bar -->
+      <div class="search-bar-wrap">
+        <div class="search-input-inner">
+          <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"></circle>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+          </svg>
+          <input type="text" id="searchInput" placeholder="Search smartphones, gaming rigs, audio, wearables..." autocomplete="off" />
+          <button id="clearSearchBtn" class="clear-search-btn" title="Clear search" style="display: none;">&times;</button>
+        </div>
+        
+        <!-- Live Autocomplete Dropdown Preview -->
+        <div id="searchAutocompleteList" class="search-autocomplete-dropdown"></div>
+      </div>
+
+      <!-- Navigation Actions Right -->
+      <div class="nav-actions">
+        
+        <!-- Theme Toggle Button -->
+        <button id="themeToggleBtn" class="icon-nav-btn" title="Toggle Light / Dark Mode" aria-label="Toggle theme">
+          <span class="theme-icon dark-show">🌙</span>
+          <span class="theme-icon light-show">☀️</span>
+        </button>
+
+        <!-- Wishlist Button -->
+        <button id="navWishlistBtn" class="nav-pill-btn" title="My Saved Wishlist">
+          <span class="btn-icon">💖</span>
+          <span class="btn-label">Wishlist</span>
+          <span id="wishlistCountBadge" class="nav-badge">0</span>
+        </button>
+
+        <!-- Cart Button -->
+        <button id="cartTriggerBtn" class="nav-pill-btn cart-pill-btn" title="View Cart">
+          <span class="btn-icon">🛒</span>
+          <span class="btn-label">Cart</span>
+          <span id="cartCountBadge" class="nav-badge count-pop">0</span>
+          <span id="navCartSubtotal" class="nav-cart-price">$0.00</span>
+        </button>
+
+        <!-- User Profile Pill & Dropdown -->
+        <div class="user-menu-wrapper">
+          <button id="authModalBtn" class="user-profile-btn" title="Account Menu">
+            <div class="user-avatar-circle" id="userAvatarCircle">👤</div>
+            <div class="user-details-text">
+              <span id="userAccountLabel" class="user-name">Sign In</span>
+              <span id="userRoleBadge" class="user-role-label">Guest</span>
+            </div>
+            <svg class="dropdown-chevron" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+          </button>
+
+          <!-- User Account Dropdown Menu -->
+          <div id="userDropdownMenu" class="user-dropdown-popover">
+            <div class="dropdown-user-header" id="dropdownUserHeader">
+              <p class="user-hello">Welcome to Mach</p>
+              <p class="user-sub-email" id="dropdownUserEmail">Signed out</p>
+            </div>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item" id="menuMyOrdersBtn">
+              <span>📦</span> My Orders & Tracking
+            </button>
+            <button class="dropdown-item" id="menuWishlistBtn">
+              <span>💖</span> My Saved Wishlist
+            </button>
+            <button class="dropdown-item" id="menuAdminBtn">
+              <span>👑</span> Admin Inventory Studio
+            </button>
+            <button class="dropdown-item" id="menuDiagnosticsBtn">
+              <span>🛰️</span> Microservices Diagnostics
+            </button>
+            <div class="dropdown-divider"></div>
+            <div class="dropdown-quick-switch">
+              <span class="quick-switch-label">Quick Demo Switch:</span>
+              <div class="quick-switch-btns">
+                <button id="quickDemoCustomerBtn" class="btn-xs">Demo User</button>
+                <button id="quickDemoAdminBtn" class="btn-xs btn-xs-admin">Demo Admin</button>
+              </div>
+            </div>
+            <div class="dropdown-divider"></div>
+            <button class="dropdown-item dropdown-logout-btn" id="logoutBtn" style="display: none;">
+              <span>🚪</span> Sign Out
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Secondary Tab Bar for Instant View Switching -->
+    <nav class="subnav-bar">
+      <div class="nav-container subnav-container">
+        <div class="subnav-tabs" id="mainViewTabs">
+          <button class="view-tab-btn active" data-view="storefront">
+            <span>🛍️</span> Storefront Catalog
+          </button>
+          <button class="view-tab-btn" data-view="deals">
+            <span>🔥</span> Flash Deals <span class="hot-pill">20% OFF</span>
+          </button>
+          <button class="view-tab-btn" data-view="orders">
+            <span>📦</span> Order Tracker
+          </button>
+          <button class="view-tab-btn" data-view="wishlist">
+            <span>💖</span> Wishlist (<span id="tabWishlistCount">0</span>)
+          </button>
+          <button class="view-tab-btn" data-view="services">
+            <span>🛰️</span> Microservices Topology
+          </button>
+          <button class="view-tab-btn" data-view="admin" id="adminStudioTab">
+            <span>👑</span> Admin Studio
+          </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main View Container (Dynamic SPA Views) -->
+  <main class="main-content" id="mainContentContainer">
+
+    <!-- ======================================================== -->
+    <!-- VIEW 1: STOREFRONT & CATALOG VIEW                        -->
+    <!-- ======================================================== -->
+    <section id="storefrontView" class="spa-view active">
+
+      <!-- Dynamic Futuristic Hero Section -->
+      <section class="hero-banner">
+        <div class="container hero-container">
+          <div class="hero-text-side">
+            <div class="hero-badge-pill">
+              <span class="badge-spark">✨</span> Spring Cloud Microservices Architecture
+            </div>
+            <h1 class="hero-headline">
+              Next-Gen Tech, <br>
+              <span class="gradient-text-flow">Enterprise Speed.</span>
+            </h1>
+            <p class="hero-description">
+              Engineered with Spring Boot 3, Kafka event pipelines, Redis caching, and reactive gateway routing. Browse premier flagship devices with instant delivery.
+            </p>
+            <div class="hero-cta-group">
+              <a href="#productsCatalog" class="btn btn-primary btn-glow">
+                Explore Catalog 🚀
+              </a>
+              <button class="btn btn-glass" id="heroOpenDiagnosticsBtn">
+                <span class="pulse-indicator"></span> Microservices Live Map
+              </button>
+              <button class="btn btn-outline" id="heroViewDealsBtn">
+                🔥 Flash Deals
+              </button>
+            </div>
+            
+            <!-- Microservice Stats Strip -->
+            <div class="stats-strip">
+              <div class="stat-box">
+                <div class="stat-number">9</div>
+                <div class="stat-label">Microservices</div>
+              </div>
+              <div class="stat-separator"></div>
+              <div class="stat-box">
+                <div class="stat-number">&lt; 5ms</div>
+                <div class="stat-label">Redis Cache</div>
+              </div>
+              <div class="stat-separator"></div>
+              <div class="stat-box">
+                <div class="stat-number">Kafka</div>
+                <div class="stat-label">Event-Driven</div>
+              </div>
+              <div class="stat-separator"></div>
+              <div class="stat-box">
+                <div class="stat-number">99.9%</div>
+                <div class="stat-label">Fault Tolerant</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Graphic Showcase (Glassmorphic Feature Showcase) -->
+          <div class="hero-showcase-side">
+            <div class="glass-feature-card">
+              <div class="feature-card-header">
+                <span class="feature-dot red"></span>
+                <span class="feature-dot yellow"></span>
+                <span class="feature-dot green"></span>
+                <span class="feature-title-bar">nexus-gateway:9002</span>
+              </div>
+              <div class="feature-hero-media">
+                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=800&q=80" alt="Flagship Device" id="heroShowcaseImg" />
+                <div class="floating-price-tag">
+                  <span class="tag-title">Featured Device</span>
+                  <span class="tag-price">$2,199.99</span>
+                </div>
+              </div>
+              <div class="feature-meta-footer">
+                <div class="meta-tag">⚡ RTX 4090 OLED</div>
+                <div class="meta-tag">🍃 MongoDB Stored</div>
+                <div class="meta-tag">🛰️ Eureka Routed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Category Navigation Pills -->
+      <section class="category-nav-section">
+        <div class="container">
+          <div class="category-pills-bar" id="categoryPillsBar">
+            <button class="cat-chip active" data-category="all">
+              <span class="chip-icon">✨</span> All Tech
+            </button>
+            <button class="cat-chip" data-category="Electronics">
+              <span class="chip-icon">💻</span> Electronics & Rigs
+            </button>
+            <button class="cat-chip" data-category="Smartphones">
+              <span class="chip-icon">📱</span> Smartphones
+            </button>
+            <button class="cat-chip" data-category="Audio">
+              <span class="chip-icon">🎧</span> Audio & Wearables
+            </button>
+            <button class="cat-chip" data-category="Computing">
+              <span class="chip-icon">⌨️</span> Computing & Gear
+            </button>
+            <button class="cat-chip" data-category="Accessories">
+              <span class="chip-icon">⚡</span> Accessories & Power
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Catalog & Filter Toolbar -->
+      <section id="productsCatalog" class="catalog-section">
+        <div class="container">
+          
+          <!-- Filter & Control Toolbar -->
+          <div class="catalog-toolbar">
+            
+            <div class="toolbar-left">
+              <h2 class="section-title">Product Catalog</h2>
+              <span id="productCountBadge" class="catalog-count-pill">Loading items...</span>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="toolbar-controls">
+              
+              <!-- Price Slider Filter -->
+              <div class="toolbar-control-group">
+                <label for="priceRangeInput" class="control-label">Max Price: <strong id="priceRangeDisplay">$3,000</strong></label>
+                <input type="range" id="priceRangeInput" min="50" max="3000" step="50" value="3000" class="range-slider">
+              </div>
+
+              <!-- In-Stock Filter Toggle -->
+              <div class="toolbar-control-group toggle-group">
+                <label class="switch-wrap">
+                  <input type="checkbox" id="inStockFilterCheck">
+                  <span class="slider-toggle"></span>
+                </label>
+                <span class="toggle-text">In Stock Only</span>
+              </div>
+
+              <!-- Brand Filter Dropdown -->
+              <div class="toolbar-control-group">
+                <select id="brandFilterSelect" class="filter-select">
+                  <option value="all">All Brands</option>
+                  <option value="Apple">Apple</option>
+                  <option value="Sony">Sony</option>
+                  <option value="Nexus">Nexus</option>
+                  <option value="Asus">Asus</option>
+                  <option value="DJI">DJI</option>
+                  <option value="Keychron">Keychron</option>
+                </select>
+              </div>
+
+              <!-- Sorting Dropdown -->
+              <div class="toolbar-control-group">
+                <select id="sortSelect" class="filter-select">
+                  <option value="featured">Sort: Featured</option>
+                  <option value="price-asc">Price: Low to High</option>
+                  <option value="price-desc">Price: High to Low</option>
+                  <option value="rating-desc">Highest Rated ⭐</option>
+                  <option value="name-asc">Name: A to Z</option>
+                </select>
+              </div>
+
+              <!-- Grid / List Layout Switcher -->
+              <div class="layout-toggle-group">
+                <button id="viewGridBtn" class="layout-btn active" title="Grid View">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <rect x="3" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="3" width="7" height="7"></rect>
+                    <rect x="14" y="14" width="7" height="7"></rect>
+                    <rect x="3" y="14" width="7" height="7"></rect>
+                  </svg>
+                </button>
+                <button id="viewListBtn" class="layout-btn" title="List View">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                    <line x1="8" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="2.5"></line>
+                    <line x1="8" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="2.5"></line>
+                    <line x1="8" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="2.5"></line>
+                    <rect x="3" y="4" width="3" height="4"></rect>
+                    <rect x="3" y="10" width="3" height="4"></rect>
+                    <rect x="3" y="16" width="3" height="4"></rect>
+                  </svg>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Active Filter Tags Display -->
+          <div id="activeFilterTags" class="active-filter-tags" style="display: none;">
+            <span class="active-filter-label">Active Filters:</span>
+            <div id="filterChipsContainer" class="filter-chips-container"></div>
+            <button id="clearAllFiltersBtn" class="clear-filters-link">Reset Filters</button>
+          </div>
+
+          <!-- Product Grid Container -->
+          <div id="productGrid" class="product-grid view-grid">
+            <!-- Dynamic Product Cards Injected Here via JavaScript -->
+          </div>
+
+          <!-- Empty Search State -->
+          <div id="catalogEmptyState" class="empty-state-card" style="display: none;">
+            <div class="empty-icon">🔍</div>
+            <h3>No Products Found</h3>
+            <p>We couldn't find any products matching your current filters and search query.</p>
+            <button class="btn btn-primary" id="resetCatalogSearchBtn">Reset Filters</button>
+          </div>
+
+        </div>
+      </section>
+
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VIEW 2: FLASH DEALS VIEW                                 -->
+    <!-- ======================================================== -->
+    <section id="dealsView" class="spa-view">
+      <div class="container view-page-container">
+        
+        <div class="deals-hero-card">
+          <div class="deals-hero-content">
+            <span class="hero-badge-pill flame">🔥 Limited Spring Cyber Event</span>
+            <h2 class="deals-title">Supercharged Deals & Instant 20% Off</h2>
+            <p class="deals-desc">Use coupon code <code class="promo-code-badge large">NEXUS20</code> at checkout on selected flagship electronics. Time remaining before prices reset:</p>
+            
+            <!-- Countdown Timer -->
+            <div class="deal-countdown-timer">
+              <div class="timer-unit">
+                <span class="timer-num" id="dealHours">14</span>
+                <span class="timer-sub">Hours</span>
+              </div>
+              <span class="timer-colon">:</span>
+              <div class="timer-unit">
+                <span class="timer-num" id="dealMins">32</span>
+                <span class="timer-sub">Minutes</span>
+              </div>
+              <span class="timer-colon">:</span>
+              <div class="timer-unit">
+                <span class="timer-num" id="dealSecs">48</span>
+                <span class="timer-sub">Seconds</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-sub-header">
+          <h3>Featured Discounted Tech</h3>
+          <p class="sub-label">Verified deals with Kafka inventory stock guarantee</p>
+        </div>
+
+        <div id="dealsGrid" class="product-grid">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VIEW 3: ORDER HISTORY & REAL-TIME TRACKING VIEW           -->
+    <!-- ======================================================== -->
+    <section id="ordersView" class="spa-view">
+      <div class="container view-page-container">
+        
+        <div class="view-header-row">
+          <div>
+            <h2 class="view-page-title">📦 Order History & Real-Time Tracking</h2>
+            <p class="view-page-subtitle">Track orders dispatched through Order-Service (Port 9009) & Delivery-Service (Port 9010).</p>
+          </div>
+          <button id="refreshOrdersBtn" class="btn btn-glass">
+            <span>🔄</span> Refresh Status
+          </button>
+        </div>
+
+        <!-- Real-Time Delivery Visual Stepper for Active Order -->
+        <div id="activeOrderTrackerCard" class="active-tracker-card" style="display: none;">
+          <div class="tracker-header">
+            <div>
+              <span class="tracker-badge">Active Live Delivery</span>
+              <h3 id="trackerOrderNumber">ORD-2026-9843</h3>
+              <p class="tracker-timestamp" id="trackerTimestamp">Placed Today</p>
+            </div>
+            <div class="tracker-actions">
+              <button id="advanceOrderStatusBtn" class="btn btn-outline btn-sm" title="Simulate courier update in Delivery-Service">
+                🚀 Simulate Status Advance
+              </button>
+              <button id="cancelCurrentOrderBtn" class="btn btn-danger-ghost btn-sm">
+                Cancel Order
+              </button>
+            </div>
+          </div>
+
+          <!-- Stepper Visual -->
+          <div class="delivery-stepper" id="deliveryStepper">
+            <div class="step-node active" id="stepPlaced">
+              <div class="step-circle">1</div>
+              <div class="step-info">
+                <span class="step-title">Order Placed</span>
+                <span class="step-time">Kafka Dispatched</span>
+              </div>
+            </div>
+            <div class="step-line" id="line1"></div>
+            <div class="step-node" id="stepPaid">
+              <div class="step-circle">2</div>
+              <div class="step-info">
+                <span class="step-title">Payment Confirmed</span>
+                <span class="step-time">Port 9006 Verified</span>
+              </div>
+            </div>
+            <div class="step-line" id="line2"></div>
+            <div class="step-node" id="stepPacked">
+              <div class="step-circle">3</div>
+              <div class="step-info">
+                <span class="step-title">Inventory Packed</span>
+                <span class="step-time">Port 9007 Allocated</span>
+              </div>
+            </div>
+            <div class="step-line" id="line3"></div>
+            <div class="step-node" id="stepShipping">
+              <div class="step-circle">4</div>
+              <div class="step-info">
+                <span class="step-title">Out for Delivery</span>
+                <span class="step-time">Courier Assigned</span>
+              </div>
+            </div>
+            <div class="step-line" id="line4"></div>
+            <div class="step-node" id="stepDelivered">
+              <div class="step-circle">5</div>
+              <div class="step-info">
+                <span class="step-title">Delivered</span>
+                <span class="step-time">Signed & Completed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Orders List Container -->
+        <div id="ordersListContainer" class="orders-list">
+          <!-- Dynamic Orders Cards Injected Here -->
+        </div>
+
+        <!-- Empty Orders State -->
+        <div id="ordersEmptyState" class="empty-state-card">
+          <div class="empty-icon">🛍️</div>
+          <h3>No Orders Found</h3>
+          <p>You haven't placed any orders yet. Explore our catalog and experience next-gen checkout.</p>
+          <button class="btn btn-primary" onclick="switchView('storefront')">Start Shopping 🚀</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VIEW 4: MY WISHLIST VIEW                                 -->
+    <!-- ======================================================== -->
+    <section id="wishlistView" class="spa-view">
+      <div class="container view-page-container">
+        
+        <div class="view-header-row">
+          <div>
+            <h2 class="view-page-title">💖 My Saved Wishlist</h2>
+            <p class="view-page-subtitle">Your curated tech gear, ready to transfer directly to cart.</p>
+          </div>
+          <button id="moveAllWishlistToCartBtn" class="btn btn-primary">
+            🛒 Move All to Cart
+          </button>
+        </div>
+
+        <div id="wishlistGrid" class="product-grid">
+          <!-- Populated dynamically via JS -->
+        </div>
+
+        <!-- Empty Wishlist State -->
+        <div id="wishlistEmptyState" class="empty-state-card">
+          <div class="empty-icon">🤍</div>
+          <h3>Your Wishlist is Empty</h3>
+          <p>Save items you love by tapping the heart icon on any product card.</p>
+          <button class="btn btn-primary" onclick="switchView('storefront')">Explore Products</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VIEW 5: MICROSERVICES TOPOLOGY & DIAGNOSTICS VIEW        -->
+    <!-- ======================================================== -->
+    <section id="servicesView" class="spa-view">
+      <div class="container view-page-container">
+        
+        <div class="view-header-row">
+          <div>
+            <h2 class="view-page-title">🛰️ Microservices Architecture & Topology Monitor</h2>
+            <p class="view-page-subtitle">Real-time health telemetry across the 9 distributed Spring Boot 3 modules, Netflix Eureka, and Apache Kafka.</p>
+          </div>
+          <div class="view-header-actions">
+            <button id="pingAllServicesBtn" class="btn btn-primary btn-glow">
+              ⚡ Ping All Microservices
+            </button>
+          </div>
+        </div>
+
+        <!-- System Architecture Overview Grid -->
+        <div class="services-telemetry-grid" id="servicesGrid">
+          <!-- Dynamic Service Cards (Gateway, Eureka, Auth, Product, Cart, Order, Payment, Category, Search, Kafka, MongoDB) -->
+        </div>
+
+        <!-- Gateway Route Reference Table -->
+        <div class="architecture-docs-card">
+          <div class="card-inner-header">
+            <h3>🌐 Spring Cloud Gateway Route Mappings (`application.yml`)</h3>
+            <span class="badge-code">Port 9002</span>
+          </div>
+          <div class="table-responsive">
+            <table class="tech-table">
+              <thead>
+                <tr>
+                  <th>Microservice Name</th>
+                  <th>Port</th>
+                  <th>Gateway Route Prefix</th>
+                  <th>Core Backend Endpoints</th>
+                  <th>Discovery Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Eureka Registry</strong></td>
+                  <td><code>8761</code></td>
+                  <td><code>/eureka/**</code></td>
+                  <td>Service Discovery & Registration</td>
+                  <td><span class="status-pill-sub green">Registered</span></td>
+                </tr>
+                <tr>
+                  <td><strong>API Gateway</strong></td>
+                  <td><code>9002</code></td>
+                  <td><code>/*</code></td>
+                  <td>CORS Deduplication & Load Balancing</td>
+                  <td><span class="status-pill-sub green">Core Edge</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Auth Service</strong></td>
+                  <td><code>9001</code></td>
+                  <td><code>/auth/**</code></td>
+                  <td><code>/auth/login</code>, <code>/auth/signup</code></td>
+                  <td><span class="status-pill-sub green">Registered</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Product Service</strong></td>
+                  <td><code>9007</code></td>
+                  <td><code>/products/**</code></td>
+                  <td><code>/products</code>, <code>/products/search</code></td>
+                  <td><span class="status-pill-sub green">Registered</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Category Service</strong></td>
+                  <td><code>9004</code></td>
+                  <td><code>/categories/**</code></td>
+                  <td><code>/categories</code>, <code>/categories/{id}</code></td>
+                  <td><span class="status-pill-sub green">Registered</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Cart Service</strong></td>
+                  <td><code>9003</code></td>
+                  <td><code>/cart/**</code></td>
+                  <td><code>/cart/add</code>, <code>/cart/{userId}</code></td>
+                  <td><span class="status-pill-sub green">Registered</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Order Service</strong></td>
+                  <td><code>9009</code></td>
+                  <td><code>/orders/**</code></td>
+                  <td><code>/orders/place</code>, <code>/orders/{userId}</code></td>
+                  <td><span class="status-pill-sub green">Registered</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Payment Service</strong></td>
+                  <td><code>9006</code></td>
+                  <td><code>/payments/**</code></td>
+                  <td><code>/payments</code>, <code>/payments/{id}/verify</code></td>
+                  <td><span class="status-pill-sub green">Registered</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Search Service</strong></td>
+                  <td><code>9008</code></td>
+                  <td><code>/search/**</code></td>
+                  <td><code>/search/{keyword}</code></td>
+                  <td><span class="status-pill-sub green">Registered</span></td>
+                </tr>
+                <tr>
+                  <td><strong>Delivery Service</strong></td>
+                  <td><code>9010</code></td>
+                  <td><code>/delivery/**</code></td>
+                  <td><code>/delivery/order/{orderId}</code></td>
+                  <td><span class="status-pill-sub green">Registered</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          
+          <div class="docker-quickstart-box">
+            <span class="box-icon">🐳</span>
+            <div>
+              <strong>Quick Start Full Microservices Cluster:</strong>
+              <code class="code-snippet">docker-compose up --build -d</code>
+              <span class="code-desc">Spins up MongoDB, Kafka, Eureka, API-Gateway and all 9 services concurrently.</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ======================================================== -->
+    <!-- VIEW 6: ADMIN MANAGEMENT STUDIO VIEW                     -->
+    <!-- ======================================================== -->
+    <section id="adminView" class="spa-view">
+      <div class="container view-page-container">
+        
+        <div class="view-header-row">
+          <div>
+            <h2 class="view-page-title">👑 Admin Inventory & Product Studio</h2>
+            <p class="view-page-subtitle">Direct management interface for seeding and updating products and categories in the database via Product-Service (9007).</p>
+          </div>
+          <div class="view-header-actions">
+            <button id="openAddProductModalBtn" class="btn btn-primary">
+              ➕ Add New Product
+            </button>
+            <button id="seedSampleCatalogBtn" class="btn btn-glass" title="Reset catalog to curated demo flagship devices">
+              🌱 Seed Flagship Catalog
+            </button>
+          </div>
+        </div>
+
+        <!-- Inventory KPI Cards -->
+        <div class="admin-kpi-grid">
+          <div class="kpi-card">
+            <div class="kpi-icon blue">📦</div>
+            <div>
+              <span class="kpi-label">Total Catalog Products</span>
+              <h3 class="kpi-value" id="kpiTotalProducts">12</h3>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon green">📊</div>
+            <div>
+              <span class="kpi-label">Units In Stock</span>
+              <h3 class="kpi-value" id="kpiTotalUnits">142</h3>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon purple">💰</div>
+            <div>
+              <span class="kpi-label">Catalog Retail Value</span>
+              <h3 class="kpi-value" id="kpiCatalogValue">$84,290</h3>
+            </div>
+          </div>
+          <div class="kpi-card">
+            <div class="kpi-icon yellow">🏷️</div>
+            <div>
+              <span class="kpi-label">Active Categories</span>
+              <h3 class="kpi-value" id="kpiTotalCategories">5</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Admin Products Table -->
+        <div class="admin-table-card">
+          <div class="table-header-bar">
+            <h3>Inventory Table</h3>
+            <input type="text" id="adminTableSearchInput" class="admin-search-input" placeholder="Quick filter table..." />
+          </div>
+          
+          <div class="table-responsive">
+            <table class="tech-table admin-table">
+              <thead>
+                <tr>
+                  <th>Product</th>
+                  <th>Category</th>
+                  <th>Brand</th>
+                  <th>Price</th>
+                  <th>Stock Units</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="adminProductsTableBody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: PRODUCT QUICK VIEW & DETAIL MODAL                 -->
+  <!-- ======================================================== -->
+  <div id="quickViewModal" class="modal-backdrop">
+    <div class="modal-card quick-view-modal">
+      <button class="modal-close-btn" id="closeQuickViewBtn">&times;</button>
+      
+      <div class="quick-view-grid">
+        <!-- Media Showcase Left -->
+        <div class="quick-view-media">
+          <div class="main-media-wrap">
+            <img src="" alt="Product Showcase" id="qvProductImage" />
+            <span class="qv-badge" id="qvBadge">Featured Flagship</span>
+          </div>
+        </div>
+
+        <!-- Details Right -->
+        <div class="quick-view-details">
+          <div class="qv-meta-row">
+            <span class="qv-brand" id="qvBrand">Brand</span>
+            <span class="qv-category-pill" id="qvCategory">Category</span>
+          </div>
+          
+          <h2 class="qv-title" id="qvTitle">Product Name</h2>
+          
+          <!-- Rating -->
+          <div class="qv-rating-row">
+            <span class="stars">⭐⭐⭐⭐⭐</span>
+            <span class="rating-num" id="qvRating">4.9</span>
+            <span class="rating-count">(148 customer reviews)</span>
+          </div>
+
+          <!-- Price & Discount -->
+          <div class="qv-price-row">
+            <span class="qv-price" id="qvPrice">$0.00</span>
+            <span class="qv-original-price" id="qvOriginalPrice">$0.00</span>
+            <span class="qv-discount-tag" id="qvDiscountTag">15% OFF</span>
+          </div>
+
+          <p class="qv-description" id="qvDescription">Product description</p>
+
+          <!-- Stock Availability Meter -->
+          <div class="stock-meter-wrap">
+            <div class="meter-labels">
+              <span>Availability: <strong id="qvStockStatus">In Stock</strong></span>
+              <span id="qvStockCount">15 units left</span>
+            </div>
+            <div class="meter-bar">
+              <div class="meter-fill" id="qvStockBar" style="width: 75%;"></div>
+            </div>
+          </div>
+
+          <!-- Quantity Selector & Action Buttons -->
+          <div class="qv-purchase-controls">
+            <div class="quantity-stepper">
+              <button class="step-btn" id="qvQtyMinus">-</button>
+              <input type="number" id="qvQtyInput" value="1" min="1" max="99" readonly />
+              <button class="step-btn" id="qvQtyPlus">+</button>
+            </div>
+            
+            <button class="btn btn-primary btn-grow" id="qvAddToCartBtn">
+              🛒 Add to Cart
+            </button>
+            <button class="btn btn-icon-like" id="qvWishlistBtn" title="Save to Wishlist">
+              💖
+            </button>
+          </div>
+
+          <button class="btn btn-accent-glow btn-full" id="qvBuyNowBtn">
+            ⚡ Buy Now (Express Checkout)
+          </button>
+
+          <!-- Specifications List -->
+          <div class="qv-specs-box">
+            <div class="spec-row">
+              <span class="spec-label">Warranty:</span>
+              <span class="spec-val">2-Year Official Manufacturer Warranty</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Dispatch:</span>
+              <span class="spec-val">Dispatched within 24h via Delivery-Service</span>
+            </div>
+            <div class="spec-row">
+              <span class="spec-label">Return Policy:</span>
+              <span class="spec-val">30-Day Hassle-Free Return Guarantee</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- DRAWER: SLIDE-OVER SHOPPING CART DRAWER                  -->
+  <!-- ======================================================== -->
+  <div id="cartDrawer" class="drawer-backdrop">
+    <div class="cart-drawer-panel">
+      
+      <!-- Drawer Header -->
+      <div class="drawer-header">
+        <div class="drawer-title-wrap">
+          <span class="drawer-icon">🛒</span>
+          <div>
+            <h3>Your Shopping Cart</h3>
+            <span id="drawerItemCountSubtitle" class="drawer-subtitle">0 items</span>
+          </div>
+        </div>
+        <button id="closeCartDrawerBtn" class="close-btn">&times;</button>
+      </div>
+
+      <!-- Free Shipping Progress Tracker -->
+      <div class="shipping-progress-box">
+        <div class="progress-label-row">
+          <span id="shippingProgressText">Add $100 more for Free Shipping!</span>
+          <span class="free-shipping-icon">🚚</span>
+        </div>
+        <div class="progress-track">
+          <div id="shippingProgressBar" class="progress-fill" style="width: 50%;"></div>
+        </div>
+      </div>
+
+      <!-- Cart Items Dynamic Scroll List -->
+      <div id="cartItemsList" class="cart-items-scroll">
+        <!-- Cart Items Dynamic Injection -->
+      </div>
+
+      <!-- Cart Drawer Footer & Checkout Calculation -->
+      <div class="cart-drawer-footer">
+        
+        <!-- Promo Coupon Input -->
+        <div class="promo-code-wrap">
+          <input type="text" id="couponInput" placeholder="Promo code (e.g. NEXUS20)" />
+          <button id="applyCouponBtn" class="btn btn-glass btn-sm">Apply</button>
+        </div>
+        <div id="appliedCouponBadge" class="applied-coupon-tag" style="display: none;">
+          <span>🎉 Code <strong>NEXUS20</strong> applied (20% off)</span>
+          <button id="removeCouponBtn" class="tag-remove-btn">&times;</button>
+        </div>
+
+        <!-- Cost Breakdown Rows -->
+        <div class="order-summary-breakdown">
+          <div class="breakdown-row">
+            <span>Subtotal</span>
+            <span id="cartSubtotal">$0.00</span>
+          </div>
+          <div class="breakdown-row discount-row" id="discountRow" style="display: none;">
+            <span>Discount Applied</span>
+            <span id="cartDiscount">-$0.00</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Estimated Tax (8%)</span>
+            <span id="cartTax">$0.00</span>
+          </div>
+          <div class="breakdown-row">
+            <span>Express Shipping</span>
+            <span id="cartShipping" class="free-tag">FREE</span>
+          </div>
+          <div class="breakdown-divider"></div>
+          <div class="breakdown-row total-row">
+            <span>Total Amount</span>
+            <span id="cartTotal" class="total-amount">$0.00</span>
+          </div>
+        </div>
+
+        <!-- Checkout Trigger Button -->
+        <button id="checkoutBtn" class="btn btn-primary btn-full btn-checkout">
+          Proceed to Checkout 💳
+        </button>
+
+        <button id="clearCartBtn" class="clear-cart-link">
+          Clear Shopping Cart
+        </button>
+
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: MULTI-STEP CHECKOUT & PAYMENT MODAL               -->
+  <!-- ======================================================== -->
+  <div id="checkoutModal" class="modal-backdrop">
+    <div class="modal-card checkout-modal-card">
+      <button class="modal-close-btn" id="closeCheckoutBtn">&times;</button>
+
+      <!-- Stepper Header -->
+      <div class="checkout-stepper-header">
+        <div class="co-step active" id="coStepIndicator1">
+          <span class="co-num">1</span>
+          <span class="co-label">Shipping</span>
+        </div>
+        <div class="co-line"></div>
+        <div class="co-step" id="coStepIndicator2">
+          <span class="co-num">2</span>
+          <span class="co-label">Payment</span>
+        </div>
+        <div class="co-line"></div>
+        <div class="co-step" id="coStepIndicator3">
+          <span class="co-num">3</span>
+          <span class="co-label">Confirmation</span>
+        </div>
+      </div>
+
+      <!-- Checkout Step 1: Shipping Details -->
+      <div id="checkoutStep1" class="checkout-step-pane active">
+        <h3 class="pane-title">📦 Delivery & Customer Details</h3>
+        <p class="pane-sub">Order will be dispatched via Spring Cloud Delivery-Service.</p>
+        
+        <form id="shippingForm" class="checkout-form">
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="shippingFullName">Full Name *</label>
+              <input type="text" id="shippingFullName" required placeholder="Alex Mercer" />
+            </div>
+            <div class="form-group flex-1">
+              <label for="shippingEmail">Email Address (for Kafka confirmation) *</label>
+              <input type="email" id="shippingEmail" required placeholder="alex@example.com" />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="shippingAddress">Street Address *</label>
+            <input type="text" id="shippingAddress" required placeholder="42 Cyberpunk Blvd, Suite 100" />
+          </div>
+
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="shippingCity">City *</label>
+              <input type="text" id="shippingCity" required placeholder="San Francisco" />
+            </div>
+            <div class="form-group flex-1">
+              <label for="shippingPostal">Postal / ZIP Code *</label>
+              <input type="text" id="shippingPostal" required placeholder="94105" />
+            </div>
+          </div>
+
+          <div class="checkout-actions">
+            <button type="button" class="btn btn-glass" onclick="closeCheckoutModal()">Cancel</button>
+            <button type="submit" class="btn btn-primary">Continue to Payment 💳</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Checkout Step 2: Payment Gateway Selection -->
+      <div id="checkoutStep2" class="checkout-step-pane">
+        <h3 class="pane-title">💳 Secure Payment Processing</h3>
+        <p class="pane-sub">Calls Spring Boot Payment-Service (Port 9006) via API Gateway.</p>
+
+        <!-- Payment Method Tabs -->
+        <div class="payment-methods-tabs">
+          <button class="pay-method-btn active" data-method="card">
+            <span>💳</span> Card
+          </button>
+          <button class="pay-method-btn" data-method="upi">
+            <span>📱</span> UPI / QR
+          </button>
+          <button class="pay-method-btn" data-method="cod">
+            <span>🚚</span> COD
+          </button>
+          <button class="pay-method-btn" data-method="instant">
+            <span>⚡</span> 1-Click Demo
+          </button>
+        </div>
+
+        <!-- Virtual Credit Card Interactive Graphic -->
+        <div class="virtual-card-graphic" id="virtualCardGraphic">
+          <div class="card-chip"></div>
+          <div class="card-brand-logo">NEXUS PAY</div>
+          <div class="card-display-number" id="cardDisplayNum">•••• •••• •••• 4242</div>
+          <div class="card-display-footer">
+            <div>
+              <span class="card-sub-label">CARDHOLDER</span>
+              <span class="card-display-name" id="cardDisplayName">ALEX MERCER</span>
+            </div>
+            <div>
+              <span class="card-sub-label">EXPIRES</span>
+              <span class="card-display-exp" id="cardDisplayExp">12/28</span>
+            </div>
+          </div>
+        </div>
+
+        <form id="paymentForm" class="checkout-form">
+          <div class="form-group">
+            <label for="cardNumInput">Card Number</label>
+            <input type="text" id="cardNumInput" placeholder="4242 4242 4242 4242" maxlength="19" value="4242 8899 1234 5678" />
+          </div>
+          <div class="form-row">
+            <div class="form-group flex-1">
+              <label for="cardExpInput">Expiry Date</label>
+              <input type="text" id="cardExpInput" placeholder="MM/YY" maxlength="5" value="12/28" />
+            </div>
+            <div class="form-group flex-1">
+              <label for="cardCvvInput">CVV Code</label>
+              <input type="password" id="cardCvvInput" placeholder="•••" maxlength="4" value="777" />
+            </div>
+          </div>
+
+          <div class="payment-order-summary-box">
+            <span>Total Payable Amount:</span>
+            <strong id="checkoutFinalTotal" class="highlight-price">$0.00</strong>
+          </div>
+
+          <div class="checkout-actions">
+            <button type="button" class="btn btn-glass" id="backToStep1Btn">Back</button>
+            <button type="submit" class="btn btn-accent-glow btn-grow" id="confirmPaymentBtn">
+              Authorize Payment & Place Order 🚀
+            </button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Checkout Step 3: Success Confirmation -->
+      <div id="checkoutStep3" class="checkout-step-pane">
+        <div class="order-success-card">
+          <div class="success-confetti-icon">🎉</div>
+          <h2>Order Confirmed!</h2>
+          <p class="success-sub">Kafka event <code class="promo-code-badge">OrderPlacedEvent</code> successfully broadcasted to Notification & Inventory topics.</p>
+
+          <div class="order-receipt-box">
+            <div class="receipt-row">
+              <span>Order Number:</span>
+              <strong id="receiptOrderNum">ORD-2026-0000</strong>
+            </div>
+            <div class="receipt-row">
+              <span>Total Charged:</span>
+              <strong id="receiptTotal">$0.00</strong>
+            </div>
+            <div class="receipt-row">
+              <span>Customer Email:</span>
+              <span id="receiptEmail">user@example.com</span>
+            </div>
+            <div class="receipt-row">
+              <span>Delivery Status:</span>
+              <span class="status-pill-sub green">Processing (Packed)</span>
+            </div>
+          </div>
+
+          <div class="success-actions">
+            <button class="btn btn-primary" id="trackPurchasedOrderBtn">
+              📦 Track This Order
+            </button>
+            <button class="btn btn-glass" onclick="closeCheckoutModal(); switchView('storefront');">
+              Continue Shopping
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ======================================================== -->
+  <!-- MODAL: AUTHENTICATION (LOGIN & SIGNUP)                   -->
+  <!-- ======================================================== -->
   <div id="authModal" class="modal-backdrop">
     <div class="modal-card auth-modal">
-      <div class="modal-header">
-        <h3 id="authTitle">Sign In to NexusCart</h3>
-        <button id="closeAuthBtn" class="close-btn">&times;</button>
+      <button class="modal-close-btn" id="closeAuthBtn">&times;</button>
+      
+      <!-- Auth Mode Tabs -->
+      <div class="auth-tabs">
+        <button class="auth-tab-btn active" id="authTabSignIn">Sign In</button>
+        <button class="auth-tab-btn" id="authTabSignUp">Create Account</button>
+      </div>
+
+      <div class="auth-header">
+        <h3 id="authTitle">Sign In to Mach</h3>
+        <p class="auth-sub" id="authSubtitle">Connected to Auth-Service (Port 9001) for JWT Token Generation</p>
+      </div>
+
+      <!-- Quick 1-Click Demo Login Bar -->
+      <div class="quick-demo-box">
+        <span class="quick-demo-title">⚡ 1-Click Fast Login:</span>
+        <div class="quick-demo-btns">
+          <button type="button" class="btn btn-glass btn-xs" id="quickLoginCustomer">Customer Demo</button>
+          <button type="button" class="btn btn-outline btn-xs" id="quickLoginAdmin">Admin Demo</button>
+        </div>
       </div>
 
       <form id="authForm" class="auth-form">
         <div id="nameFieldGroup" class="form-group hidden">
           <label for="authName">Full Name</label>
-          <input type="text" id="authName" placeholder="e.g. John Doe" />
+          <input type="text" id="authName" placeholder="e.g. Alex Mercer" />
         </div>
 
         <div class="form-group">
           <label for="authEmail">Email Address</label>
-          <input type="email" id="authEmail" required placeholder="user@example.com" />
+          <input type="email" id="authEmail" required placeholder="alex@mach.com" />
         </div>
 
         <div class="form-group">
           <label for="authPassword">Password</label>
-          <input type="password" id="authPassword" required placeholder="••••••••" />
+          <div class="password-input-wrap">
+            <input type="password" id="authPassword" required placeholder="••••••••" />
+            <button type="button" id="togglePasswordVisibilityBtn" class="toggle-pw-btn" title="Show/Hide Password">👁️</button>
+          </div>
         </div>
 
         <div id="roleFieldGroup" class="form-group hidden">
           <label for="authRole">Account Role</label>
           <select id="authRole">
-            <option value="CUSTOMER">Customer Account</option>
-            <option value="ADMIN">Administrator</option>
+            <option value="CUSTOMER">Standard Customer (Storefront & Orders)</option>
+            <option value="ADMIN">Administrator (Full Inventory CRUD)</option>
           </select>
         </div>
 
-        <button type="submit" id="authSubmitBtn" class="btn btn-primary btn-full">Sign In 🗝️</button>
+        <button type="submit" id="authSubmitBtn" class="btn btn-primary btn-full btn-glow">
+          Sign In 🗝️
+        </button>
       </form>
 
       <div class="auth-toggle">
@@ -141,21 +1188,148 @@
     </div>
   </div>
 
-  <!-- Notification Toast -->
-  <div id="toast" class="toast">Action notification message</div>
+  <!-- ======================================================== -->
+  <!-- MODAL: ADMIN ADD / EDIT PRODUCT MODAL                    -->
+  <!-- ======================================================== -->
+  <div id="productFormModal" class="modal-backdrop">
+    <div class="modal-card admin-form-modal">
+      <button class="modal-close-btn" id="closeProductFormModalBtn">&times;</button>
+      
+      <div class="modal-header">
+        <h3 id="productFormModalTitle">➕ Add New Product to Catalog</h3>
+        <p class="modal-subtitle">Will call <code>POST /products</code> via Spring Cloud Gateway (Port 9002).</p>
+      </div>
 
-  <!-- Live Analytics Footer -->
-  <footer style="text-align: center; padding: 2rem; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 4rem; font-size: 0.85rem; color: rgba(255,255,255,0.5);">
-    <p>© 2026 NexusCart E-Commerce Microservices Platform. Built with Spring Boot & Docker.</p>
-    <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 8px;">
-      <span style="display: inline-flex; align-items: center; gap: 6px; background: rgba(255,255,255,0.05); padding: 4px 12px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.1);">
-        <span style="width: 8px; height: 8px; background: #00f2fe; border-radius: 50%; display: inline-block; box-shadow: 0 0 8px #00f2fe;"></span>
-        Total Visitors: <img src="https://api.visitorbadge.io/api/visitors?path=129.225.69.56&countColor=%234f46e5&label=VISITS&labelColor=%231e293b" alt="Visitor Counter" style="vertical-align: middle; height: 20px; border-radius: 4px;" />
-      </span>
+      <form id="adminProductForm" class="admin-product-form">
+        <input type="hidden" id="adminProductId" />
+        
+        <div class="form-row">
+          <div class="form-group flex-2">
+            <label for="adminProdName">Product Title *</label>
+            <input type="text" id="adminProdName" required placeholder="e.g. CyberDesk Pro 75 Mechanical Keyboard" />
+          </div>
+          <div class="form-group flex-1">
+            <label for="adminProdBrand">Brand *</label>
+            <input type="text" id="adminProdBrand" required placeholder="e.g. Nexus or Asus" />
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group flex-1">
+            <label for="adminProdCategory">Category *</label>
+            <select id="adminProdCategory" required>
+              <option value="Electronics">Electronics</option>
+              <option value="Smartphones">Smartphones</option>
+              <option value="Audio">Audio</option>
+              <option value="Computing">Computing</option>
+              <option value="Wearables">Wearables</option>
+              <option value="Accessories">Accessories</option>
+            </select>
+          </div>
+          <div class="form-group flex-1">
+            <label for="adminProdPrice">Price ($ USD) *</label>
+            <input type="number" id="adminProdPrice" step="0.01" min="0" required placeholder="299.99" />
+          </div>
+          <div class="form-group flex-1">
+            <label for="adminProdStock">Stock Units *</label>
+            <input type="number" id="adminProdStock" min="0" required placeholder="25" />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="adminProdDesc">Description *</label>
+          <textarea id="adminProdDesc" rows="3" required placeholder="High performance specifications, key features, and highlights..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="adminProdImage">Image URL *</label>
+          <input type="url" id="adminProdImage" required placeholder="https://images.unsplash.com/..." />
+          <div class="preset-images-strip">
+            <span class="preset-label">Pick Preset Photo:</span>
+            <button type="button" class="preset-img-btn" data-url="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?auto=format&fit=crop&w=600&q=80">💻 Laptop</button>
+            <button type="button" class="preset-img-btn" data-url="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80">📱 Phone</button>
+            <button type="button" class="preset-img-btn" data-url="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=600&q=80">🎧 Audio</button>
+            <button type="button" class="preset-img-btn" data-url="https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?auto=format&fit=crop&w=600&q=80">🖥️ Monitor</button>
+            <button type="button" class="preset-img-btn" data-url="https://images.unsplash.com/photo-1546868871-7041f2a55e12?auto=format&fit=crop&w=600&q=80">⌚ Watch</button>
+          </div>
+        </div>
+
+        <div class="admin-form-actions">
+          <button type="button" class="btn btn-glass" onclick="closeAdminProductModal()">Cancel</button>
+          <button type="submit" class="btn btn-primary btn-glow" id="saveProductBtn">
+            💾 Save Product to Database
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Notification Toast Alert -->
+  <div id="toast" class="toast-card">
+    <div class="toast-icon-wrap" id="toastIcon">⚡</div>
+    <div class="toast-content">
+      <span class="toast-title" id="toastTitle">System Alert</span>
+      <span class="toast-msg" id="toastMsg">Action notification message</span>
+    </div>
+    <div class="toast-progress-bar">
+      <div class="toast-progress-fill" id="toastProgress"></div>
+    </div>
+  </div>
+
+  <!-- Live Footer with Microservices Info -->
+  <footer class="site-footer">
+    <div class="container footer-container">
+      <div class="footer-col brand-col">
+        <div class="logo">
+          <span class="logo-icon">⚡</span>
+          <span class="logo-text">Nexus<span class="logo-highlight">Cart</span></span>
+        </div>
+        <p class="footer-desc">
+          High-performance distributed e-commerce architecture engineered with Java 21, Spring Boot 3.2, Spring Cloud Gateway, Kafka, and MongoDB.
+        </p>
+        <div class="footer-badges">
+          <span class="badge-tag">Spring Cloud 2023</span>
+          <span class="badge-tag">Kafka 3.6</span>
+          <span class="badge-tag">Docker Compose</span>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h4>Microservices Ports</h4>
+        <ul class="footer-links">
+          <li><code>8761</code> Eureka Discovery Registry</li>
+          <li><code>9002</code> API Cloud Gateway Edge</li>
+          <li><code>9001</code> Authentication & JWT Service</li>
+          <li><code>9007</code> Product Catalog Service</li>
+          <li><code>9009</code> Order Management & Kafka</li>
+          <li><code>9003</code> Reactive Cart Service</li>
+          <li><code>9006</code> Payment Gateway Service</li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul class="footer-links">
+          <li><a href="#" onclick="switchView('storefront'); return false;">Storefront Catalog</a></li>
+          <li><a href="#" onclick="switchView('deals'); return false;">Flash Tech Deals</a></li>
+          <li><a href="#" onclick="switchView('orders'); return false;">Order Delivery Tracker</a></li>
+          <li><a href="#" onclick="switchView('services'); return false;">Microservices Diagnostics</a></li>
+          <li><a href="#" onclick="switchView('admin'); return false;">Admin Management Studio</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-container">
+        <p>© 2026 Mach Enterprise. Engineered for distributed cloud microservices.</p>
+        <div class="visitor-counter-wrap">
+          <span class="pulse-dot-online"></span>
+          <span>Live Cluster Health: <strong>Nominal</strong></span>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script src="app.js"></script>
 </body>
-
 </html>

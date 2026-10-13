@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "6107b530-e108-4c2a-9109-eb407dea607c",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/candidate.json",
+  "output": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/mach.html",
+  "specification": {
+    "sha256": "aea9983df79d5508c4ecab6903fbee14ecf94ae0248bd102fb745cae9d8bd946",
+    "bytes": 7128
+  },
+  "artifact": {
+    "sha256": "2a8d64553a26a8a480f5c6c686403bae98e04d72ded27c9b7c3ae49423ebfd62",
+    "bytes": 853940
+  }
+}

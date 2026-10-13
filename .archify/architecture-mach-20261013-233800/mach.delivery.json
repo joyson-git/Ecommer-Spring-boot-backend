@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "receiptId": "45697bbe-bd2b-48b5-9710-0f5c5efa71e7",
+  "status": "current",
+  "command": "deliver",
+  "type": "architecture",
+  "input": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-mach-20261013-233800/candidate.json",
+  "output": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-mach-20261013-233800/mach.html",
+  "specification": {
+    "sha256": "27eaa1050bed71e374008521bfdc15fa46320553164fd23d0e1cd6d910769a36",
+    "bytes": 7123
+  },
+  "artifact": {
+    "sha256": "2a8d64553a26a8a480f5c6c686403bae98e04d72ded27c9b7c3ae49423ebfd62",
+    "bytes": 853940
+  }
+}

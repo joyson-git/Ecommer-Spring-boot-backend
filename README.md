@@ -1,34 +1,65 @@
-# ⚡ MAch - Enterprise E-Commerce Microservices Platform
+# ⚡ Mach - Enterprise E-Commerce Microservices Platform
 
-MAch t is a full-stack, enterprise-grade **E-Commerce Product Software Solution** engineered with a distributed **Spring Boot 3 & Spring Cloud Microservices Architecture** on the backend and a modern **Glassmorphic Single-Page Application (SPA)** on the frontend.
+Mach is a full-stack, enterprise-grade **E-Commerce Product Software Solution** engineered with a distributed **Spring Boot 3 & Spring Cloud Microservices Architecture** on the backend and a modern **Glassmorphic Single-Page Application (SPA)** on the frontend.
 
 ---
 
 ## 🌟 Software Architecture Overview
 
+### 🎨 Interactive Architecture Diagram 
+
+Mach features an interactive, production-grade architecture diagram built with **[Archify](https://github.com/tt-a1i/archify)** (`v3.1`). It provides standalone, client-side interactive visualization with live particle animation, dark/light theme switching, detailed service inspection cards, and export capabilities (SVG, PNG, WebM).
+
+- 🔗 **View Interactive Diagram**: [`mach.html`](.archify/architecture-mach-20261013-233800/mach.html)
+- 🖥️ **Open in Browser (macOS)**:
+  ```bash
+  open .archify/architecture-mach-20261013-233800/mach.html
+  ```
+- 🛠️ **Archify Integration**: Located in [`.agents/skills/archify/`](.agents/skills/archify/). To regenerate or modify the architecture diagram:
+  ```bash
+  node .agents/skills/archify/bin/archify.mjs deliver architecture .archify/architecture-mach-20261013-233800/candidate.json .archify/architecture-mach-20261013-233800/mach.html --quality standard
+  ```
+
+### 📊 Topology Flow (Mermaid)
+
 ```mermaid
 graph TD
-    Client[🖥️ Web Frontend / Postman] -->|HTTP Requests| Gateway[🌐 API Gateway - Port 9002]
-    Gateway -->|Service Discovery| Eureka[🛰️ Eureka Registry - Port 8761]
+    Client[🖥️ Web Browser SPA] -->|HTTP :80| Nginx[🌐 Nginx Web Server]
+    Client -->|API :9002| Gateway[🌐 Spring Cloud API Gateway]
+    Gateway -.->|lb:// Discovery| Eureka[🛰️ Netflix Eureka - Port 8761]
 
-    Gateway -->|/auth/**| Auth[🗝️ Auth Service - Port 9001]
-    Gateway -->|/products/**| Product[📦 Product Service - Port 9007]
-    Gateway -->|/categories/**| Category[🏷️ Category Service - Port 9004]
-    Gateway -->|/cart/**| Cart[🛒 Cart Service - Port 9003]
-    Gateway -->|/orders/**| Order[📦 Order Service - Port 9009]
-    Gateway -->|/payments/**| Payment[💳 Payment Service - Port 9006]
-    Gateway -->|/search/**| Search[🔍 Search Service - Port 9008]
+    subgraph "Synchronous Domain Microservices"
+        Gateway -->|/auth/**| Auth[🗝️ Auth Service - Port 9001]
+        Gateway -->|/products/**| Product[📦 Product Service - Port 9007]
+        Gateway -->|/categories/**| Category[🏷️ Category Service - Port 9004]
+        Gateway -->|/cart/**| Cart[🛒 Cart Service - Port 9003]
+        Gateway -->|/orders/**| Order[📦 Order Service - Port 9009]
+        Gateway -->|/payments/**| Payment[💳 Payment Service - Port 9006]
+        Gateway -->|/search/**| Search[🔍 Search Service - Port 9008]
 
-    Auth --> MongoDB[(🍃 MongoDB)]
-    Product --> MongoDB
-    Category --> MongoDB
-    Cart --> MongoDB
-    Order --> MongoDB
-    Payment --> MongoDB
-    
-    Cart -.->|OpenFeign| Product
-    Order -.->|OpenFeign| Cart
-    Order -.->|OpenFeign| Payment
+        Cart -.->|OpenFeign| Product
+        Order -.->|OpenFeign| Cart
+        Order -.->|OpenFeign| Payment
+    end
+
+    subgraph "Event-Driven & Async Processing"
+        Order ==>|Publish OrderPlacedEvent| Kafka[⚡ Apache Kafka - Port 9092]
+        Kafka -.->|Coordination| ZK[🐘 ZooKeeper - Port 2181]
+        Kafka -->|Consume| Delivery[🚚 Delivery Service - Port 9011]
+        Kafka -->|Consume| Notification[🔔 Notification Service - Port 9005]
+        Kafka -->|Consume| Inventory[📊 Inventory Service]
+    end
+
+    subgraph "Data Persistence Layer"
+        Auth --> MongoDB[(🍃 MongoDB - Port 27018)]
+        Product --> MongoDB
+        Category --> MongoDB
+        Cart --> MongoDB
+        Order --> MongoDB
+        Payment --> MongoDB
+        Delivery --> MongoDB
+        Inventory --> MongoDB
+    end
 ```
 
 ---
@@ -109,7 +140,7 @@ To ensure smooth service registration and inter-service communication, start the
 
 ## 🖥️ Running the Frontend Application
 
-The frontend is located in the [`frontend/`](file:///Users/joysonpinto/Downloads/Ecommer-Spring-boot-backend-main/frontend/) directory.
+The frontend is located in the [`frontend/`](frontend/) directory.
 
 ### Quick Start (macOS / Linux):
 ```bash
@@ -133,9 +164,10 @@ Ensure headers include `Content-Type: application/json` for all `POST` / `PUT` r
 
 ## 🚀 Advanced Enterprise Architecture Topics
 
-For detailed code snippets, production configurations, and deployment manifests, see **[`ADVANCED.md`](file:///Users/joysonpinto/Downloads/Ecommer-Spring-boot-backend-main/ADVANCED.md)**.
+For detailed code snippets, production configurations, and deployment manifests, see **[`ADVANCED.md`](ADVANCED.md)**.
 
 ### Included Advanced Topics:
+<<<<<<< Updated upstream
 1. 📡 **[Event-Driven Architecture (Apache Kafka)](file:///Users/joysonpinto/Downloads/Ecommer-Spring-boot-backend-main/ADVANCED.md#1-event-driven-architecture-apache-kafka)** - Producer/Consumer setups for async order processing.
 2. ⚡ **[Distributed Caching Layer (Redis)](file:///Users/joysonpinto/Downloads/Ecommer-Spring-boot-backend-main/ADVANCED.md#2-distributed-caching-layer-redis)** - `@Cacheable` catalog query optimization.
 3. 🛡️ **[Resilience & Circuit Breakers (Resilience4j)](file:///Users/joysonpinto/Downloads/Ecommer-Spring-boot-backend-main/ADVANCED.md#3-resilience--circuit-breakers-resilience4j)** - Gateway fallback routes and failure thresholds.
@@ -143,3 +175,12 @@ For detailed code snippets, production configurations, and deployment manifests,
 5. 📊 **[Distributed Tracing & Telemetry (Zipkin & Prometheus)](file:///Users/joysonpinto/Downloads/Ecommer-Spring-boot-backend-main/ADVANCED.md#5-distributed-tracing--telemetry-zipkin--prometheus)** - Cross-service correlation IDs (`traceId`).
 6. 🐳 **[Containerization (Docker & Docker Compose)](file:///Users/joysonpinto/Downloads/Ecommer-Spring-boot-backend-main/ADVANCED.md#6-containerization-docker--docker-compose)** - Multi-container `docker-compose.yml` for all 9 microservices.
 7. ☸️ **[Kubernetes (K8s) Auto-Scaling (HPA)](file:///Users/joysonpinto/Downloads/Ecommer-Spring-boot-backend-main/ADVANCED.md#7-kubernetes-k8s-deployment--auto-scaling)** - Kubernetes Deployments & Horizontal Pod Autoscaler YAML manifests.
+=======
+1. 📡 **[Event-Driven Architecture (Apache Kafka)](ADVANCED.md#1-event-driven-architecture-apache-kafka)** - Producer/Consumer setups for async order processing.
+2. ⚡ **[Distributed Caching Layer (Redis)](ADVANCED.md#2-distributed-caching-layer-redis)** - `@Cacheable` catalog query optimization.
+3. 🛡️ **[Resilience & Circuit Breakers (Resilience4j)](ADVANCED.md#3-resilience--circuit-breakers-resilience4j)** - Gateway fallback routes and failure thresholds.
+4. 🔐 **[Distributed Security (Spring Security + JWT)](ADVANCED.md#4-distributed-security-spring-security--jwt)** - Token verification filters & RBAC.
+5. 📊 **[Distributed Tracing & Telemetry (Zipkin & Prometheus)](ADVANCED.md#5-distributed-tracing--telemetry-zipkin--prometheus)** - Cross-service correlation IDs (`traceId`).
+6. 🐳 **[Containerization (Docker & Docker Compose)](ADVANCED.md#6-containerization-docker--docker-compose)** - Multi-container `docker-compose.yml` for all 9 microservices.
+7. ☸️ **[Kubernetes (K8s) Auto-Scaling (HPA)](ADVANCED.md#7-kubernetes-k8s-deployment--auto-scaling)** - Kubernetes Deployments & Horizontal Pod Autoscaler YAML manifests.
+>>>>>>> Stashed changes

@@ -21,4 +21,7 @@ public class NotificationConsumer {
         logger.info("Sending order confirmation email to {}...", event.getCustomerEmail());
         logger.info("==================================================");
     }
+
+
+
 }

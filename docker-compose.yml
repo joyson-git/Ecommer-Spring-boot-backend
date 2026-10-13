@@ -184,6 +184,22 @@ services:
     networks:
       - ecommer-net
 
+  delivery-service:
+    build: ./backend/delivery-service
+    container_name: delivery-service
+    depends_on:
+      - eureka-server
+      - mongodb
+      - kafka
+    ports:
+      - "9011:9011"
+    environment:
+      - SPRING_DATA_MONGODB_URI=mongodb://mongodb:27017/delivery_db
+      - SPRING_KAFKA_BOOTSTRAP_SERVERS=kafka:29092
+      - EUREKA_CLIENT_SERVICEURL_DEFAULTZONE=http://eureka-server:8761/eureka/
+    networks:
+      - ecommer-net
+
   # -------------------------------------------------------------
   # 5. FRONTEND WEB APPLICATION (Port 80)
   # -------------------------------------------------------------

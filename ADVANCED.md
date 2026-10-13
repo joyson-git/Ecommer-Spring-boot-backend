@@ -1,6 +1,6 @@
-# 🚀 NexusCart - Advanced Architecture & Production Guide
+# 🚀 Mach - Advanced Architecture & Production Guide
 
-This guide covers advanced enterprise software engineering concepts, design patterns, containerization, security, distributed caching, event-driven messaging, and observability for the NexusCart E-Commerce Microservices Platform.
+This guide covers advanced enterprise software engineering concepts, design patterns, containerization, security, distributed caching, event-driven messaging, and observability for the Mach E-Commerce Microservices Platform.
 
 ---
 
@@ -295,7 +295,7 @@ spec:
     spec:
       containers:
       - name: product-service
-        image: nexuscart/product-service:1.0.0
+        image: mach/product-service:1.0.0
         ports:
         - containerPort: 9007
         resources:

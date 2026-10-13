@@ -17,5 +17,28 @@ public class PaymentService {
  }
 
 
+    public Payment verifyPayment(String orderId) {
+        return paymentRepository.findByOrderId(orderId)
+                .orElseThrow(() ->
+                        new RuntimeException("Payment not found"));
+    }
 
+
+    // Refund
+    public Payment refundPayment(String orderId) {
+
+        Payment payment = paymentRepository.findByOrderId(orderId)
+                .orElseThrow(() ->
+                        new RuntimeException("Payment not found"));
+
+        if (!"SUCCESS".equals(payment.getStatus())) {
+            throw new RuntimeException(
+                    "Only successful payments can be refunded"
+            );
+        }
+
+        payment.setStatus("REFUNDED");
+
+        return paymentRepository.save(payment);
+    }
 }

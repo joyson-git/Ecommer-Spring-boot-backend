@@ -30,6 +30,7 @@
 		<module>backend/search-service</module>
 		<module>backend/notification-service</module>
 		<module>backend/inventory-service</module>
+		<module>backend/delivery-service</module>
 	</modules>
 
 

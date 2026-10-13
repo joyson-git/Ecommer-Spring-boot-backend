@@ -20,18 +20,33 @@ public class PaymentController {
 //    POST /payments/{id}/verify
 //    POST /payments/{id}/refund
 
-
-
     @Autowired
     private PaymentService paymentService;
 
+    //    Payment creation
     @PostMapping
     public Payment makePayment(@RequestBody Payment payment) {
-
         return paymentService.processPayment(payment);
     }
 
+//    Payment verification
+@GetMapping("/{orderId}")
+public Payment makeVerification(@PathVariable String orderId) {
+    return paymentService.verifyPayment(orderId);
+}
+    //    Payment status
+@PostMapping("/{id}/verify")
+public  Payment makePaymentstatus(@PathVariable String id){
+return paymentService.verifyPayment(id);
+}
 
+
+
+    //    Refunds
+@PostMapping("/{id}/refund")
+public  Payment makeRefund(@PathVariable String id){
+ return paymentService.refundPayment(id);
+}
 
 
 

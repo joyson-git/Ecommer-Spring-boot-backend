@@ -1,0 +1,3534 @@
+{
+  "schemaVersion": 1,
+  "ok": false,
+  "command": "finalize",
+  "status": "fail",
+  "type": "architecture",
+  "quality": "standard",
+  "startedAt": "2026-10-13T18:16:24.881Z",
+  "specification": {
+    "path": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/candidate.json",
+    "sha256": "5eabc0495849a682c252e27b1d54bb227439d7abbc54fca2fea4a5e8d40c9fa7",
+    "bytes": 7138
+  },
+  "artifact": {
+    "path": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.html",
+    "sha256": "63ed24e64a01f83fba0a26713cb142bf2f29cc315c12dcfb140323fc41f949ab",
+    "bytes": 853955
+  },
+  "stages": {
+    "validate": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": null,
+      "execution": "embedded-in-deliver",
+      "command": [
+        "/Users/joysonpinto/.nvm/versions/node/v20.20.2/bin/node",
+        "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.agents/skills/archify/bin/archify.mjs",
+        "deliver",
+        "architecture",
+        "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/candidate.json",
+        "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.html",
+        "--quality",
+        "standard",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": true,
+        "command": "validate",
+        "specification": {
+          "sha256": "5eabc0495849a682c252e27b1d54bb227439d7abbc54fca2fea4a5e8d40c9fa7",
+          "bytes": 7138
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "standard",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 26,
+          "compositionIssues": [
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "lb:// resolve",
+              "labelRelationship": {
+                "id": "gateway-eureka",
+                "from": "gateway",
+                "to": "eureka",
+                "label": "lb:// resolve",
+                "collectionIndex": 2,
+                "artifactIndex": 3
+              },
+              "otherRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 243.8,
+                "y": 360,
+                "width": 72.4,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                294,
+                356
+              ],
+              "to": [
+                294,
+                380
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "lb:// resolve",
+              "labelRelationship": {
+                "id": "gateway-eureka",
+                "from": "gateway",
+                "to": "eureka",
+                "label": "lb:// resolve",
+                "collectionIndex": 2,
+                "artifactIndex": 3
+              },
+              "otherRelationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 243.8,
+                "y": 360,
+                "width": 72.4,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                266,
+                356
+              ],
+              "to": [
+                266,
+                448
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/products/**",
+              "labelRelationship": {
+                "id": "gateway-product",
+                "from": "gateway",
+                "to": "product",
+                "label": "/products/**",
+                "collectionIndex": 4,
+                "artifactIndex": 5
+              },
+              "otherRelationship": {
+                "id": "gateway-auth",
+                "from": "gateway",
+                "to": "auth",
+                "label": "/auth/**",
+                "collectionIndex": 3,
+                "artifactIndex": 4
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 333.2,
+                "y": 188,
+                "width": 67.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                394,
+                316
+              ],
+              "to": [
+                394,
+                128
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/categories/**",
+              "labelRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 316.4,
+                "y": 360,
+                "width": 77.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                386,
+                340
+              ],
+              "to": [
+                386,
+                528
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/categories/**",
+              "labelRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 316.4,
+                "y": 360,
+                "width": 77.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/categories/**",
+              "labelRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 316.4,
+                "y": 360,
+                "width": 77.2,
+                "height": 14
+              },
+              "clearance": 1.4,
+              "intersectionLength": 0,
+              "threshold": 2,
+              "from": [
+                395,
+                608
+              ],
+              "to": [
+                395,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/search/**",
+              "labelRelationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 324,
+                "y": 428,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/payments/**",
+              "labelRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 352.2,
+                "y": 414,
+                "width": 67.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/payments/**",
+              "labelRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 352.2,
+                "y": 414,
+                "width": 67.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                395,
+                608
+              ],
+              "to": [
+                395,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/orders/**",
+              "labelRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "otherRelationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 346,
+                "y": 448,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 58,
+              "threshold": 2,
+              "from": [
+                266,
+                448
+              ],
+              "to": [
+                440,
+                448
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/orders/**",
+              "labelRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "otherRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 346,
+                "y": 448,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                386,
+                340
+              ],
+              "to": [
+                386,
+                528
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/orders/**",
+              "labelRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 346,
+                "y": 448,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                395,
+                608
+              ],
+              "to": [
+                395,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-cart-product",
+                "from": "cart",
+                "to": "product",
+                "label": "OpenFeign",
+                "collectionIndex": 10,
+                "artifactIndex": 11
+              },
+              "otherRelationship": {
+                "id": "gateway-auth",
+                "from": "gateway",
+                "to": "auth",
+                "label": "/auth/**",
+                "collectionIndex": 3,
+                "artifactIndex": 4
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 378.4,
+                "y": 268,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                394,
+                316
+              ],
+              "to": [
+                394,
+                128
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-cart-product",
+                "from": "cart",
+                "to": "product",
+                "label": "OpenFeign",
+                "collectionIndex": 10,
+                "artifactIndex": 11
+              },
+              "otherRelationship": {
+                "id": "gateway-cart",
+                "from": "gateway",
+                "to": "cart",
+                "label": "/cart/**",
+                "collectionIndex": 6,
+                "artifactIndex": 7
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 378.4,
+                "y": 268,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 23.6,
+              "threshold": 2,
+              "from": [
+                280,
+                276
+              ],
+              "to": [
+                402,
+                276
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "otherRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 368.4,
+                "y": 468,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                386,
+                340
+              ],
+              "to": [
+                386,
+                528
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 368.4,
+                "y": 468,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "consume",
+              "labelRelationship": {
+                "id": "kafka-notif",
+                "from": "kafka",
+                "to": "notification",
+                "label": "consume",
+                "collectionIndex": 16,
+                "artifactIndex": 17
+              },
+              "otherRelationship": {
+                "id": "kafka-delivery",
+                "from": "kafka",
+                "to": "delivery",
+                "label": "consume",
+                "collectionIndex": 15,
+                "artifactIndex": 16
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 598.2,
+                "y": 744.5,
+                "width": 43.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 21.8,
+              "threshold": 2,
+              "from": [
+                570,
+                748
+              ],
+              "to": [
+                620,
+                748
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "auth_db",
+              "labelRelationship": {
+                "id": "auth-mongo",
+                "from": "auth",
+                "to": "mongodb",
+                "label": "auth_db",
+                "collectionIndex": 18,
+                "artifactIndex": 19
+              },
+              "otherRelationship": {
+                "id": "product-mongo",
+                "from": "product",
+                "to": "mongodb",
+                "label": "product_db",
+                "collectionIndex": 19,
+                "artifactIndex": 20
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 713.2,
+                "y": 214,
+                "width": 43.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                749,
+                208
+              ],
+              "to": [
+                749,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "product_db",
+              "labelRelationship": {
+                "id": "product-mongo",
+                "from": "product",
+                "to": "mongodb",
+                "label": "product_db",
+                "collectionIndex": 19,
+                "artifactIndex": 20
+              },
+              "otherRelationship": {
+                "id": "auth-mongo",
+                "from": "auth",
+                "to": "mongodb",
+                "label": "auth_db",
+                "collectionIndex": 18,
+                "artifactIndex": 19
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 720,
+                "y": 254,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                735,
+                128
+              ],
+              "to": [
+                735,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "category_db",
+              "labelRelationship": {
+                "id": "category-mongo",
+                "from": "category",
+                "to": "mongodb",
+                "label": "category_db",
+                "collectionIndex": 20,
+                "artifactIndex": 21
+              },
+              "otherRelationship": {
+                "id": "auth-mongo",
+                "from": "auth",
+                "to": "mongodb",
+                "label": "auth_db",
+                "collectionIndex": 18,
+                "artifactIndex": 19
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 689.6,
+                "y": 294,
+                "width": 62.8,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                735,
+                128
+              ],
+              "to": [
+                735,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "category_db",
+              "labelRelationship": {
+                "id": "category-mongo",
+                "from": "category",
+                "to": "mongodb",
+                "label": "category_db",
+                "collectionIndex": 20,
+                "artifactIndex": 21
+              },
+              "otherRelationship": {
+                "id": "product-mongo",
+                "from": "product",
+                "to": "mongodb",
+                "label": "product_db",
+                "collectionIndex": 19,
+                "artifactIndex": 20
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 689.6,
+                "y": 294,
+                "width": 62.8,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                749,
+                208
+              ],
+              "to": [
+                749,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "order_db",
+              "labelRelationship": {
+                "id": "order-mongo",
+                "from": "order",
+                "to": "mongodb",
+                "label": "order_db",
+                "collectionIndex": 23,
+                "artifactIndex": 24
+              },
+              "otherRelationship": {
+                "id": "delivery-mongo",
+                "from": "delivery",
+                "to": "mongodb",
+                "label": "delivery_db",
+                "collectionIndex": 24,
+                "artifactIndex": 25
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 696.8,
+                "y": 482,
+                "width": 48.4,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                735,
+                680
+              ],
+              "to": [
+                735,
+                396
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "feign-cart-product",
+                "from": "cart",
+                "to": "product",
+                "label": "OpenFeign",
+                "collectionIndex": 10,
+                "artifactIndex": 11
+              },
+              "point": [
+                416,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "point": [
+                395,
+                380
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "point": [
+                395,
+                448
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "point": [
+                395,
+                528
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "deliver": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 333,
+      "command": [
+        "/Users/joysonpinto/.nvm/versions/node/v20.20.2/bin/node",
+        "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.agents/skills/archify/bin/archify.mjs",
+        "deliver",
+        "architecture",
+        "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/candidate.json",
+        "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.html",
+        "--quality",
+        "standard",
+        "--json"
+      ],
+      "receipt": {
+        "schemaVersion": 1,
+        "receiptId": "af07486d-162f-4e1b-853a-bd585c659956",
+        "ok": true,
+        "command": "deliver",
+        "type": "architecture",
+        "input": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/candidate.json",
+        "output": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.html",
+        "specification": {
+          "sha256": "5eabc0495849a682c252e27b1d54bb227439d7abbc54fca2fea4a5e8d40c9fa7",
+          "bytes": 7138
+        },
+        "artifact": {
+          "sha256": "63ed24e64a01f83fba0a26713cb142bf2f29cc315c12dcfb140323fc41f949ab",
+          "bytes": 853955
+        },
+        "validation": {
+          "checksPassed": 9,
+          "checkCount": 9,
+          "compositionProfile": "standard",
+          "compositionStatus": "pass",
+          "errors": 0,
+          "warnings": 26,
+          "compositionIssues": [
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "lb:// resolve",
+              "labelRelationship": {
+                "id": "gateway-eureka",
+                "from": "gateway",
+                "to": "eureka",
+                "label": "lb:// resolve",
+                "collectionIndex": 2,
+                "artifactIndex": 3
+              },
+              "otherRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 243.8,
+                "y": 360,
+                "width": 72.4,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                294,
+                356
+              ],
+              "to": [
+                294,
+                380
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "lb:// resolve",
+              "labelRelationship": {
+                "id": "gateway-eureka",
+                "from": "gateway",
+                "to": "eureka",
+                "label": "lb:// resolve",
+                "collectionIndex": 2,
+                "artifactIndex": 3
+              },
+              "otherRelationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 243.8,
+                "y": 360,
+                "width": 72.4,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                266,
+                356
+              ],
+              "to": [
+                266,
+                448
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/products/**",
+              "labelRelationship": {
+                "id": "gateway-product",
+                "from": "gateway",
+                "to": "product",
+                "label": "/products/**",
+                "collectionIndex": 4,
+                "artifactIndex": 5
+              },
+              "otherRelationship": {
+                "id": "gateway-auth",
+                "from": "gateway",
+                "to": "auth",
+                "label": "/auth/**",
+                "collectionIndex": 3,
+                "artifactIndex": 4
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 333.2,
+                "y": 188,
+                "width": 67.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                394,
+                316
+              ],
+              "to": [
+                394,
+                128
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/categories/**",
+              "labelRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 316.4,
+                "y": 360,
+                "width": 77.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                386,
+                340
+              ],
+              "to": [
+                386,
+                528
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/categories/**",
+              "labelRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 316.4,
+                "y": 360,
+                "width": 77.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/categories/**",
+              "labelRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 316.4,
+                "y": 360,
+                "width": 77.2,
+                "height": 14
+              },
+              "clearance": 1.4,
+              "intersectionLength": 0,
+              "threshold": 2,
+              "from": [
+                395,
+                608
+              ],
+              "to": [
+                395,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/search/**",
+              "labelRelationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 324,
+                "y": 428,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/payments/**",
+              "labelRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 352.2,
+                "y": 414,
+                "width": 67.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/payments/**",
+              "labelRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 352.2,
+                "y": 414,
+                "width": 67.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                395,
+                608
+              ],
+              "to": [
+                395,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/orders/**",
+              "labelRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "otherRelationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 346,
+                "y": 448,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 58,
+              "threshold": 2,
+              "from": [
+                266,
+                448
+              ],
+              "to": [
+                440,
+                448
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/orders/**",
+              "labelRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "otherRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 346,
+                "y": 448,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                386,
+                340
+              ],
+              "to": [
+                386,
+                528
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/orders/**",
+              "labelRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 346,
+                "y": 448,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                395,
+                608
+              ],
+              "to": [
+                395,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-cart-product",
+                "from": "cart",
+                "to": "product",
+                "label": "OpenFeign",
+                "collectionIndex": 10,
+                "artifactIndex": 11
+              },
+              "otherRelationship": {
+                "id": "gateway-auth",
+                "from": "gateway",
+                "to": "auth",
+                "label": "/auth/**",
+                "collectionIndex": 3,
+                "artifactIndex": 4
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 378.4,
+                "y": 268,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                394,
+                316
+              ],
+              "to": [
+                394,
+                128
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-cart-product",
+                "from": "cart",
+                "to": "product",
+                "label": "OpenFeign",
+                "collectionIndex": 10,
+                "artifactIndex": 11
+              },
+              "otherRelationship": {
+                "id": "gateway-cart",
+                "from": "gateway",
+                "to": "cart",
+                "label": "/cart/**",
+                "collectionIndex": 6,
+                "artifactIndex": 7
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 378.4,
+                "y": 268,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 23.6,
+              "threshold": 2,
+              "from": [
+                280,
+                276
+              ],
+              "to": [
+                402,
+                276
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "otherRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 368.4,
+                "y": 468,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                386,
+                340
+              ],
+              "to": [
+                386,
+                528
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 368.4,
+                "y": 468,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "consume",
+              "labelRelationship": {
+                "id": "kafka-notif",
+                "from": "kafka",
+                "to": "notification",
+                "label": "consume",
+                "collectionIndex": 16,
+                "artifactIndex": 17
+              },
+              "otherRelationship": {
+                "id": "kafka-delivery",
+                "from": "kafka",
+                "to": "delivery",
+                "label": "consume",
+                "collectionIndex": 15,
+                "artifactIndex": 16
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 598.2,
+                "y": 744.5,
+                "width": 43.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 21.8,
+              "threshold": 2,
+              "from": [
+                570,
+                748
+              ],
+              "to": [
+                620,
+                748
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "auth_db",
+              "labelRelationship": {
+                "id": "auth-mongo",
+                "from": "auth",
+                "to": "mongodb",
+                "label": "auth_db",
+                "collectionIndex": 18,
+                "artifactIndex": 19
+              },
+              "otherRelationship": {
+                "id": "product-mongo",
+                "from": "product",
+                "to": "mongodb",
+                "label": "product_db",
+                "collectionIndex": 19,
+                "artifactIndex": 20
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 713.2,
+                "y": 214,
+                "width": 43.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                749,
+                208
+              ],
+              "to": [
+                749,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "product_db",
+              "labelRelationship": {
+                "id": "product-mongo",
+                "from": "product",
+                "to": "mongodb",
+                "label": "product_db",
+                "collectionIndex": 19,
+                "artifactIndex": 20
+              },
+              "otherRelationship": {
+                "id": "auth-mongo",
+                "from": "auth",
+                "to": "mongodb",
+                "label": "auth_db",
+                "collectionIndex": 18,
+                "artifactIndex": 19
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 720,
+                "y": 254,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                735,
+                128
+              ],
+              "to": [
+                735,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "category_db",
+              "labelRelationship": {
+                "id": "category-mongo",
+                "from": "category",
+                "to": "mongodb",
+                "label": "category_db",
+                "collectionIndex": 20,
+                "artifactIndex": 21
+              },
+              "otherRelationship": {
+                "id": "auth-mongo",
+                "from": "auth",
+                "to": "mongodb",
+                "label": "auth_db",
+                "collectionIndex": 18,
+                "artifactIndex": 19
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 689.6,
+                "y": 294,
+                "width": 62.8,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                735,
+                128
+              ],
+              "to": [
+                735,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "category_db",
+              "labelRelationship": {
+                "id": "category-mongo",
+                "from": "category",
+                "to": "mongodb",
+                "label": "category_db",
+                "collectionIndex": 20,
+                "artifactIndex": 21
+              },
+              "otherRelationship": {
+                "id": "product-mongo",
+                "from": "product",
+                "to": "mongodb",
+                "label": "product_db",
+                "collectionIndex": 19,
+                "artifactIndex": 20
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 689.6,
+                "y": 294,
+                "width": 62.8,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                749,
+                208
+              ],
+              "to": [
+                749,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "order_db",
+              "labelRelationship": {
+                "id": "order-mongo",
+                "from": "order",
+                "to": "mongodb",
+                "label": "order_db",
+                "collectionIndex": 23,
+                "artifactIndex": 24
+              },
+              "otherRelationship": {
+                "id": "delivery-mongo",
+                "from": "delivery",
+                "to": "mongodb",
+                "label": "delivery_db",
+                "collectionIndex": 24,
+                "artifactIndex": 25
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 696.8,
+                "y": 482,
+                "width": 48.4,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                735,
+                680
+              ],
+              "to": [
+                735,
+                396
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "feign-cart-product",
+                "from": "cart",
+                "to": "product",
+                "label": "OpenFeign",
+                "collectionIndex": 10,
+                "artifactIndex": 11
+              },
+              "point": [
+                416,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "point": [
+                395,
+                380
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "point": [
+                395,
+                448
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "point": [
+                395,
+                528
+              ]
+            }
+          ]
+        },
+        "update": {
+          "status": "unavailable",
+          "installedVersion": null,
+          "availableVersion": null,
+          "releaseNotes": null,
+          "checkedAt": null,
+          "source": null,
+          "noticeRequired": false,
+          "noticeText": null,
+          "reason": "disabled"
+        }
+      }
+    },
+    "check": {
+      "status": "pass",
+      "exitCode": 0,
+      "durationMs": 108,
+      "command": [
+        "/Users/joysonpinto/.nvm/versions/node/v20.20.2/bin/node",
+        "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.agents/skills/archify/bin/archify.mjs",
+        "check",
+        "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.html",
+        "--require-provenance"
+      ],
+      "receipt": {
+        "ok": true,
+        "file": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.html",
+        "artifact": {
+          "sha256": "63ed24e64a01f83fba0a26713cb142bf2f29cc315c12dcfb140323fc41f949ab",
+          "bytes": 853955
+        },
+        "checks": [
+          {
+            "name": "single_svg",
+            "ok": true,
+            "details": [
+              "found 1 <svg> block(s)"
+            ]
+          },
+          {
+            "name": "finite_svg",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "orthogonal_arrows",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "label_route_clearance",
+            "ok": true,
+            "details": [
+              "[composition/label-route-clearance] standard label \"lb:// resolve\" on relationship id \"gateway-eureka\" (\"gateway\" -> \"eureka\") is 0px from relationship id \"gateway-category\" (\"gateway\" -> \"category\") segment 0 [294, 356] -> [294, 380] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"lb:// resolve\" on relationship id \"gateway-eureka\" (\"gateway\" -> \"eureka\") is 0px from relationship id \"gateway-search\" (\"gateway\" -> \"search\") segment 0 [266, 356] -> [266, 448] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"/products/**\" on relationship id \"gateway-product\" (\"gateway\" -> \"product\") is 0px from relationship id \"gateway-auth\" (\"gateway\" -> \"auth\") segment 1 [394, 316] -> [394, 128] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"/categories/**\" on relationship id \"gateway-category\" (\"gateway\" -> \"category\") is 0px from relationship id \"gateway-payment\" (\"gateway\" -> \"payment\") segment 1 [386, 340] -> [386, 528] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"/categories/**\" on relationship id \"gateway-category\" (\"gateway\" -> \"category\") is 0px from relationship id \"gateway-order\" (\"gateway\" -> \"order\") segment 1 [375, 328] -> [375, 608] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"/categories/**\" on relationship id \"gateway-category\" (\"gateway\" -> \"category\") is 1.4px from relationship id \"feign-order-cart\" (\"order\" -> \"cart\") segment 1 [395, 608] -> [395, 368] (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"/search/**\" on relationship id \"gateway-search\" (\"gateway\" -> \"search\") is 0px from relationship id \"gateway-order\" (\"gateway\" -> \"order\") segment 1 [375, 328] -> [375, 608] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"/payments/**\" on relationship id \"gateway-payment\" (\"gateway\" -> \"payment\") is 0px from relationship id \"gateway-order\" (\"gateway\" -> \"order\") segment 1 [375, 328] -> [375, 608] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"/payments/**\" on relationship id \"gateway-payment\" (\"gateway\" -> \"payment\") is 0px from relationship id \"feign-order-cart\" (\"order\" -> \"cart\") segment 1 [395, 608] -> [395, 368] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"/orders/**\" on relationship id \"gateway-order\" (\"gateway\" -> \"order\") is 0px from relationship id \"gateway-search\" (\"gateway\" -> \"search\") segment 1 [266, 448] -> [440, 448] with 58px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"/orders/**\" on relationship id \"gateway-order\" (\"gateway\" -> \"order\") is 0px from relationship id \"gateway-payment\" (\"gateway\" -> \"payment\") segment 1 [386, 340] -> [386, 528] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"/orders/**\" on relationship id \"gateway-order\" (\"gateway\" -> \"order\") is 0px from relationship id \"feign-order-cart\" (\"order\" -> \"cart\") segment 1 [395, 608] -> [395, 368] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"OpenFeign\" on relationship id \"feign-cart-product\" (\"cart\" -> \"product\") is 0px from relationship id \"gateway-auth\" (\"gateway\" -> \"auth\") segment 1 [394, 316] -> [394, 128] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"OpenFeign\" on relationship id \"feign-cart-product\" (\"cart\" -> \"product\") is 0px from relationship id \"gateway-cart\" (\"gateway\" -> \"cart\") segment 1 [280, 276] -> [402, 276] with 23.6px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"OpenFeign\" on relationship id \"feign-order-cart\" (\"order\" -> \"cart\") is 0px from relationship id \"gateway-payment\" (\"gateway\" -> \"payment\") segment 1 [386, 340] -> [386, 528] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"OpenFeign\" on relationship id \"feign-order-cart\" (\"order\" -> \"cart\") is 0px from relationship id \"gateway-order\" (\"gateway\" -> \"order\") segment 1 [375, 328] -> [375, 608] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"consume\" on relationship id \"kafka-notif\" (\"kafka\" -> \"notification\") is 0px from relationship id \"kafka-delivery\" (\"kafka\" -> \"delivery\") segment 0 [570, 748] -> [620, 748] with 21.8px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"auth_db\" on relationship id \"auth-mongo\" (\"auth\" -> \"mongodb\") is 0px from relationship id \"product-mongo\" (\"product\" -> \"mongodb\") segment 1 [749, 208] -> [749, 340] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"product_db\" on relationship id \"product-mongo\" (\"product\" -> \"mongodb\") is 0px from relationship id \"auth-mongo\" (\"auth\" -> \"mongodb\") segment 1 [735, 128] -> [735, 340] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"category_db\" on relationship id \"category-mongo\" (\"category\" -> \"mongodb\") is 0px from relationship id \"auth-mongo\" (\"auth\" -> \"mongodb\") segment 1 [735, 128] -> [735, 340] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"category_db\" on relationship id \"category-mongo\" (\"category\" -> \"mongodb\") is 0px from relationship id \"product-mongo\" (\"product\" -> \"mongodb\") segment 1 [749, 208] -> [749, 340] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel.",
+              "[composition/label-route-clearance] standard label \"order_db\" on relationship id \"order-mongo\" (\"order\" -> \"mongodb\") is 0px from relationship id \"delivery-mongo\" (\"delivery\" -> \"mongodb\") segment 0 [735, 680] -> [735, 396] with 14px hidden by the mask (minimum 2px) — use renderer-supported label controls (message y for sequence; otherwise labelAt, labelDx, labelDy, or labelSegment), or adjust the other relationship route/via/channel."
+            ]
+          },
+          {
+            "name": "relationship_crossings",
+            "ok": true,
+            "details": [
+              "[composition/proper-crossing] standard relationship id \"gateway-category\" (\"gateway\" -> \"category\") crosses relationship id \"feign-cart-product\" (\"cart\" -> \"product\") at [416, 368]",
+              "[composition/proper-crossing] standard relationship id \"gateway-category\" (\"gateway\" -> \"category\") crosses relationship id \"feign-order-cart\" (\"order\" -> \"cart\") at [395, 380]",
+              "[composition/proper-crossing] standard relationship id \"gateway-search\" (\"gateway\" -> \"search\") crosses relationship id \"feign-order-cart\" (\"order\" -> \"cart\") at [395, 448]",
+              "[composition/proper-crossing] standard relationship id \"gateway-payment\" (\"gateway\" -> \"payment\") crosses relationship id \"feign-order-cart\" (\"order\" -> \"cart\") at [395, 528]"
+            ]
+          },
+          {
+            "name": "relationship_corridors",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "container_border_runs",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "route_rhythm",
+            "ok": true,
+            "details": []
+          },
+          {
+            "name": "legend_clearance",
+            "ok": true,
+            "details": []
+          }
+        ],
+        "composition": {
+          "schemaVersion": 1,
+          "profile": "standard",
+          "status": "pass",
+          "summary": {
+            "errors": 0,
+            "warnings": 26
+          },
+          "metrics": {
+            "properCrossings": 4,
+            "resolvedCrossovers": 7,
+            "ambiguousCorridors": 0,
+            "arrowheadCollisions": 0,
+            "containerBorderRuns": 0,
+            "labelRouteClearanceIssues": 22,
+            "labelCanvasOverflowIssues": 0,
+            "minLabelRouteClearance": 0,
+            "desktopReadabilityIssues": 0,
+            "viewportHeightIssues": 0,
+            "minProjectedNodeTextPx": 8,
+            "maxBends": 3,
+            "routesOverSuggestedBends": 2,
+            "maxStretch": 1.438,
+            "routesOverSuggestedStretch": 2,
+            "minSegmentPx": 24,
+            "minInteriorSegmentPx": 40,
+            "shortSegmentCount": 0,
+            "shortEndpointSegmentCount": 0,
+            "shortInteriorSegmentCount": 0,
+            "microSegmentCount": 0
+          },
+          "suggestedLimits": {
+            "bendsPerRelationship": 2,
+            "stretch": 1.35,
+            "segmentPx": 16,
+            "microSegmentPx": 8
+          },
+          "routeReview": {
+            "crossings": [
+              {
+                "left": {
+                  "id": "gateway-eureka",
+                  "from": "gateway",
+                  "to": "eureka",
+                  "label": "lb:// resolve",
+                  "collectionIndex": 2,
+                  "artifactIndex": 3
+                },
+                "right": {
+                  "id": "gateway-search",
+                  "from": "gateway",
+                  "to": "search",
+                  "label": "/search/**",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "point": [
+                  280,
+                  448
+                ],
+                "sharedNode": "gateway"
+              },
+              {
+                "left": {
+                  "id": "gateway-auth",
+                  "from": "gateway",
+                  "to": "auth",
+                  "label": "/auth/**",
+                  "collectionIndex": 3,
+                  "artifactIndex": 4
+                },
+                "right": {
+                  "id": "gateway-product",
+                  "from": "gateway",
+                  "to": "product",
+                  "label": "/products/**",
+                  "collectionIndex": 4,
+                  "artifactIndex": 5
+                },
+                "point": [
+                  394,
+                  208
+                ],
+                "sharedNode": "gateway"
+              },
+              {
+                "left": {
+                  "id": "gateway-product",
+                  "from": "gateway",
+                  "to": "product",
+                  "label": "/products/**",
+                  "collectionIndex": 4,
+                  "artifactIndex": 5
+                },
+                "right": {
+                  "id": "gateway-cart",
+                  "from": "gateway",
+                  "to": "cart",
+                  "label": "/cart/**",
+                  "collectionIndex": 6,
+                  "artifactIndex": 7
+                },
+                "point": [
+                  294,
+                  276
+                ],
+                "sharedNode": "gateway"
+              },
+              {
+                "left": {
+                  "id": "gateway-category",
+                  "from": "gateway",
+                  "to": "category",
+                  "label": "/categories/**",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "right": {
+                  "id": "gateway-cart",
+                  "from": "gateway",
+                  "to": "cart",
+                  "label": "/cart/**",
+                  "collectionIndex": 6,
+                  "artifactIndex": 7
+                },
+                "point": [
+                  416,
+                  368
+                ],
+                "sharedNode": "gateway"
+              },
+              {
+                "left": {
+                  "id": "gateway-category",
+                  "from": "gateway",
+                  "to": "category",
+                  "label": "/categories/**",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "right": {
+                  "id": "gateway-payment",
+                  "from": "gateway",
+                  "to": "payment",
+                  "label": "/payments/**",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "point": [
+                  386,
+                  380
+                ],
+                "sharedNode": "gateway"
+              },
+              {
+                "left": {
+                  "id": "gateway-search",
+                  "from": "gateway",
+                  "to": "search",
+                  "label": "/search/**",
+                  "collectionIndex": 7,
+                  "artifactIndex": 8
+                },
+                "right": {
+                  "id": "gateway-payment",
+                  "from": "gateway",
+                  "to": "payment",
+                  "label": "/payments/**",
+                  "collectionIndex": 8,
+                  "artifactIndex": 9
+                },
+                "point": [
+                  386,
+                  448
+                ],
+                "sharedNode": "gateway"
+              },
+              {
+                "left": {
+                  "id": "auth-mongo",
+                  "from": "auth",
+                  "to": "mongodb",
+                  "label": "auth_db",
+                  "collectionIndex": 18,
+                  "artifactIndex": 19
+                },
+                "right": {
+                  "id": "product-mongo",
+                  "from": "product",
+                  "to": "mongodb",
+                  "label": "product_db",
+                  "collectionIndex": 19,
+                  "artifactIndex": 20
+                },
+                "point": [
+                  735,
+                  208
+                ],
+                "sharedNode": "mongodb"
+              }
+            ],
+            "crowdedSides": [
+              {
+                "node": "gateway",
+                "label": "API Gateway",
+                "side": "right",
+                "relationships": 6,
+                "sidePx": 56,
+                "neededPx": 102
+              },
+              {
+                "node": "kafka",
+                "label": "Apache Kafka",
+                "side": "right",
+                "relationships": 3,
+                "sidePx": 56,
+                "neededPx": 60
+              },
+              {
+                "node": "mongodb",
+                "label": "MongoDB",
+                "side": "left",
+                "relationships": 4,
+                "sidePx": 56,
+                "neededPx": 74
+              }
+            ],
+            "detours": [
+              {
+                "relationship": {
+                  "id": "gateway-category",
+                  "from": "gateway",
+                  "to": "category",
+                  "label": "/categories/**",
+                  "collectionIndex": 5,
+                  "artifactIndex": 6
+                },
+                "bends": 3,
+                "stretch": 1.224
+              },
+              {
+                "relationship": {
+                  "id": "gateway-cart",
+                  "from": "gateway",
+                  "to": "cart",
+                  "label": "/cart/**",
+                  "collectionIndex": 6,
+                  "artifactIndex": 7
+                },
+                "bends": 3,
+                "stretch": 1.211
+              },
+              {
+                "relationship": {
+                  "id": "feign-cart-product",
+                  "from": "cart",
+                  "to": "product",
+                  "label": "OpenFeign",
+                  "collectionIndex": 10,
+                  "artifactIndex": 11
+                },
+                "bends": 2,
+                "stretch": 1.438,
+                "directCorridorBlockers": [
+                  {
+                    "id": "category",
+                    "label": "Category Service",
+                    "box": [
+                      440,
+                      260,
+                      130,
+                      56
+                    ]
+                  }
+                ]
+              },
+              {
+                "relationship": {
+                  "id": "feign-order-cart",
+                  "from": "order",
+                  "to": "cart",
+                  "label": "OpenFeign",
+                  "collectionIndex": 11,
+                  "artifactIndex": 12
+                },
+                "bends": 2,
+                "stretch": 1.375,
+                "directCorridorBlockers": [
+                  {
+                    "id": "search",
+                    "label": "Search Service",
+                    "box": [
+                      440,
+                      420,
+                      130,
+                      56
+                    ]
+                  },
+                  {
+                    "id": "payment",
+                    "label": "Payment Service",
+                    "box": [
+                      440,
+                      500,
+                      130,
+                      56
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          "leadingSpace": {
+            "measured": true,
+            "emptyTopPx": 58,
+            "emptyTopRatio": 0.059,
+            "occupiedTop": 58,
+            "viewBoxTop": 0,
+            "canvasHeight": 984,
+            "typicalNodeHeight": 56,
+            "reviewSuggested": false
+          },
+          "desktopReadability": {
+            "budgetBasis": "legacy-930",
+            "readerContract": "declared-wide-v1",
+            "availableDiagramWidth": 930,
+            "actualBudgetPx": 930,
+            "limit": "legacy",
+            "requestedTargetPx": 7.5,
+            "requestedTargetMet": true,
+            "hardFloorPx": 6,
+            "hardFloorMet": true,
+            "minimumOwner": {
+              "kind": "edge",
+              "id": "browser-nginx",
+              "from": "browser",
+              "to": "nginx"
+            },
+            "minimumSourceTextPx": 8,
+            "minimumProjectedTextPx": 8,
+            "semanticTextCount": 62
+          },
+          "issues": [
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "lb:// resolve",
+              "labelRelationship": {
+                "id": "gateway-eureka",
+                "from": "gateway",
+                "to": "eureka",
+                "label": "lb:// resolve",
+                "collectionIndex": 2,
+                "artifactIndex": 3
+              },
+              "otherRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 243.8,
+                "y": 360,
+                "width": 72.4,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                294,
+                356
+              ],
+              "to": [
+                294,
+                380
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "lb:// resolve",
+              "labelRelationship": {
+                "id": "gateway-eureka",
+                "from": "gateway",
+                "to": "eureka",
+                "label": "lb:// resolve",
+                "collectionIndex": 2,
+                "artifactIndex": 3
+              },
+              "otherRelationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 243.8,
+                "y": 360,
+                "width": 72.4,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                266,
+                356
+              ],
+              "to": [
+                266,
+                448
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/products/**",
+              "labelRelationship": {
+                "id": "gateway-product",
+                "from": "gateway",
+                "to": "product",
+                "label": "/products/**",
+                "collectionIndex": 4,
+                "artifactIndex": 5
+              },
+              "otherRelationship": {
+                "id": "gateway-auth",
+                "from": "gateway",
+                "to": "auth",
+                "label": "/auth/**",
+                "collectionIndex": 3,
+                "artifactIndex": 4
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 333.2,
+                "y": 188,
+                "width": 67.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                394,
+                316
+              ],
+              "to": [
+                394,
+                128
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/categories/**",
+              "labelRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 316.4,
+                "y": 360,
+                "width": 77.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                386,
+                340
+              ],
+              "to": [
+                386,
+                528
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/categories/**",
+              "labelRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 316.4,
+                "y": 360,
+                "width": 77.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/categories/**",
+              "labelRelationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 316.4,
+                "y": 360,
+                "width": 77.2,
+                "height": 14
+              },
+              "clearance": 1.4,
+              "intersectionLength": 0,
+              "threshold": 2,
+              "from": [
+                395,
+                608
+              ],
+              "to": [
+                395,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/search/**",
+              "labelRelationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 324,
+                "y": 428,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/payments/**",
+              "labelRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 352.2,
+                "y": 414,
+                "width": 67.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/payments/**",
+              "labelRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 352.2,
+                "y": 414,
+                "width": 67.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                395,
+                608
+              ],
+              "to": [
+                395,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/orders/**",
+              "labelRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "otherRelationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 346,
+                "y": 448,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 58,
+              "threshold": 2,
+              "from": [
+                266,
+                448
+              ],
+              "to": [
+                440,
+                448
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/orders/**",
+              "labelRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "otherRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 346,
+                "y": 448,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                386,
+                340
+              ],
+              "to": [
+                386,
+                528
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "/orders/**",
+              "labelRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 346,
+                "y": 448,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                395,
+                608
+              ],
+              "to": [
+                395,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-cart-product",
+                "from": "cart",
+                "to": "product",
+                "label": "OpenFeign",
+                "collectionIndex": 10,
+                "artifactIndex": 11
+              },
+              "otherRelationship": {
+                "id": "gateway-auth",
+                "from": "gateway",
+                "to": "auth",
+                "label": "/auth/**",
+                "collectionIndex": 3,
+                "artifactIndex": 4
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 378.4,
+                "y": 268,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                394,
+                316
+              ],
+              "to": [
+                394,
+                128
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-cart-product",
+                "from": "cart",
+                "to": "product",
+                "label": "OpenFeign",
+                "collectionIndex": 10,
+                "artifactIndex": 11
+              },
+              "otherRelationship": {
+                "id": "gateway-cart",
+                "from": "gateway",
+                "to": "cart",
+                "label": "/cart/**",
+                "collectionIndex": 6,
+                "artifactIndex": 7
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 378.4,
+                "y": 268,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 23.6,
+              "threshold": 2,
+              "from": [
+                280,
+                276
+              ],
+              "to": [
+                402,
+                276
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "otherRelationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 368.4,
+                "y": 468,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                386,
+                340
+              ],
+              "to": [
+                386,
+                528
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "OpenFeign",
+              "labelRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "otherRelationship": {
+                "id": "gateway-order",
+                "from": "gateway",
+                "to": "order",
+                "label": "/orders/**",
+                "collectionIndex": 9,
+                "artifactIndex": 10
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 368.4,
+                "y": 468,
+                "width": 53.2,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                375,
+                328
+              ],
+              "to": [
+                375,
+                608
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "consume",
+              "labelRelationship": {
+                "id": "kafka-notif",
+                "from": "kafka",
+                "to": "notification",
+                "label": "consume",
+                "collectionIndex": 16,
+                "artifactIndex": 17
+              },
+              "otherRelationship": {
+                "id": "kafka-delivery",
+                "from": "kafka",
+                "to": "delivery",
+                "label": "consume",
+                "collectionIndex": 15,
+                "artifactIndex": 16
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 598.2,
+                "y": 744.5,
+                "width": 43.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 21.8,
+              "threshold": 2,
+              "from": [
+                570,
+                748
+              ],
+              "to": [
+                620,
+                748
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "auth_db",
+              "labelRelationship": {
+                "id": "auth-mongo",
+                "from": "auth",
+                "to": "mongodb",
+                "label": "auth_db",
+                "collectionIndex": 18,
+                "artifactIndex": 19
+              },
+              "otherRelationship": {
+                "id": "product-mongo",
+                "from": "product",
+                "to": "mongodb",
+                "label": "product_db",
+                "collectionIndex": 19,
+                "artifactIndex": 20
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 713.2,
+                "y": 214,
+                "width": 43.6,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                749,
+                208
+              ],
+              "to": [
+                749,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "product_db",
+              "labelRelationship": {
+                "id": "product-mongo",
+                "from": "product",
+                "to": "mongodb",
+                "label": "product_db",
+                "collectionIndex": 19,
+                "artifactIndex": 20
+              },
+              "otherRelationship": {
+                "id": "auth-mongo",
+                "from": "auth",
+                "to": "mongodb",
+                "label": "auth_db",
+                "collectionIndex": 18,
+                "artifactIndex": 19
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 720,
+                "y": 254,
+                "width": 58,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                735,
+                128
+              ],
+              "to": [
+                735,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "category_db",
+              "labelRelationship": {
+                "id": "category-mongo",
+                "from": "category",
+                "to": "mongodb",
+                "label": "category_db",
+                "collectionIndex": 20,
+                "artifactIndex": 21
+              },
+              "otherRelationship": {
+                "id": "auth-mongo",
+                "from": "auth",
+                "to": "mongodb",
+                "label": "auth_db",
+                "collectionIndex": 18,
+                "artifactIndex": 19
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 689.6,
+                "y": 294,
+                "width": 62.8,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                735,
+                128
+              ],
+              "to": [
+                735,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "category_db",
+              "labelRelationship": {
+                "id": "category-mongo",
+                "from": "category",
+                "to": "mongodb",
+                "label": "category_db",
+                "collectionIndex": 20,
+                "artifactIndex": 21
+              },
+              "otherRelationship": {
+                "id": "product-mongo",
+                "from": "product",
+                "to": "mongodb",
+                "label": "product_db",
+                "collectionIndex": 19,
+                "artifactIndex": 20
+              },
+              "segmentIndex": 1,
+              "labelRect": {
+                "x": 689.6,
+                "y": 294,
+                "width": 62.8,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                749,
+                208
+              ],
+              "to": [
+                749,
+                340
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/label-route-clearance",
+              "label": "order_db",
+              "labelRelationship": {
+                "id": "order-mongo",
+                "from": "order",
+                "to": "mongodb",
+                "label": "order_db",
+                "collectionIndex": 23,
+                "artifactIndex": 24
+              },
+              "otherRelationship": {
+                "id": "delivery-mongo",
+                "from": "delivery",
+                "to": "mongodb",
+                "label": "delivery_db",
+                "collectionIndex": 24,
+                "artifactIndex": 25
+              },
+              "segmentIndex": 0,
+              "labelRect": {
+                "x": 696.8,
+                "y": 482,
+                "width": 48.4,
+                "height": 14
+              },
+              "clearance": 0,
+              "intersectionLength": 14,
+              "threshold": 2,
+              "from": [
+                735,
+                680
+              ],
+              "to": [
+                735,
+                396
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "feign-cart-product",
+                "from": "cart",
+                "to": "product",
+                "label": "OpenFeign",
+                "collectionIndex": 10,
+                "artifactIndex": 11
+              },
+              "point": [
+                416,
+                368
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-category",
+                "from": "gateway",
+                "to": "category",
+                "label": "/categories/**",
+                "collectionIndex": 5,
+                "artifactIndex": 6
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "point": [
+                395,
+                380
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-search",
+                "from": "gateway",
+                "to": "search",
+                "label": "/search/**",
+                "collectionIndex": 7,
+                "artifactIndex": 8
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "point": [
+                395,
+                448
+              ]
+            },
+            {
+              "severity": "warning",
+              "code": "composition/proper-crossing",
+              "relationship": {
+                "id": "gateway-payment",
+                "from": "gateway",
+                "to": "payment",
+                "label": "/payments/**",
+                "collectionIndex": 8,
+                "artifactIndex": 9
+              },
+              "otherRelationship": {
+                "id": "feign-order-cart",
+                "from": "order",
+                "to": "cart",
+                "label": "OpenFeign",
+                "collectionIndex": 11,
+                "artifactIndex": 12
+              },
+              "point": [
+                395,
+                528
+              ]
+            }
+          ]
+        },
+        "provenance": "current",
+        "deliveryReceiptId": "af07486d-162f-4e1b-853a-bd585c659956"
+      }
+    },
+    "browser-check": {
+      "status": "fail",
+      "exitCode": 1,
+      "durationMs": 4579,
+      "command": [
+        "/Users/joysonpinto/.nvm/versions/node/v20.20.2/bin/node",
+        "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.agents/skills/archify/bin/archify.mjs",
+        "browser-check",
+        "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.html",
+        "--json",
+        "--require-provenance"
+      ],
+      "execution": "in-process",
+      "receipt": {
+        "schemaVersion": 1,
+        "ok": false,
+        "command": "browser-check",
+        "evidenceKind": "automated-browser",
+        "status": "fail",
+        "visualReview": "not-requested",
+        "provenance": "current",
+        "deliveryReceiptId": "af07486d-162f-4e1b-853a-bd585c659956",
+        "artifact": {
+          "path": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.html",
+          "sha256": "63ed24e64a01f83fba0a26713cb142bf2f29cc315c12dcfb140323fc41f949ab",
+          "bytes": 853955
+        },
+        "state": {
+          "detail": "read",
+          "motion": "still"
+        },
+        "chrome": {
+          "status": "available",
+          "executable": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        },
+        "diagnostics": [
+          {
+            "code": "viewer/browser-check-runtime",
+            "severity": "error",
+            "message": "browser-check could not complete its Chrome inspection.",
+            "subject": {
+              "artifact": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.html"
+            },
+            "evidence": {
+              "reason": "Chrome DevTools read pipe failed: stream ended\nChrome process: still running.\nChrome stderr:\n[1013/234629.567206:ERROR:third_party/crashpad/crashpad/util/mach/bootstrap.cc:65] bootstrap_check_in org.chromium.crashpad.child_port_handshake.75118.7447776.ZZJCUHRFOPGDHCOO: Permission denied (1100)\n[1013/234629.640918:ERROR:third_party/crashpad/crashpad/util/file/file_io.cc:103] ReadExactly: expected 4, observed 0\n[1013/234629.641476:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:208] open /Users/joysonpinto/Library/Application Support/Google/Chrome/Crashpad/settings.dat: Operation not permitted (1)\n[1013/234629.641526:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:208] open /Users/joysonpinto/Library/Application Support/Google/Chrome/Crashpad/settings.dat: Operation not permitted (1)\n[75108:7447838:1013/234629.810345:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in com.google.Chrome.MachPortRendezvousServer.75108: Permission denied (1100)\nChrome transport: Node v20.20.2, libuv 1.46.0, darwin; pid=75108, exitCode=null, signalCode=null.\nChrome read pipe: readable=false, ended=true, destroyed=false, receivedBytes=0, messages=0, bufferedBytes=0.\nChrome write pipe: writable=true, ended=false, destroyed=false, completedWrites=1, writtenBytes=50, bufferedBytes=0."
+            },
+            "supportedFixes": [
+              "resolve the reported Chrome inspection error, then rerun browser-check"
+            ]
+          }
+        ],
+        "containment": {
+          "status": "fail",
+          "policy": "fit-or-reader-declared-readable-vertical-scroll",
+          "viewports": []
+        },
+        "themeStates": {
+          "status": "fail",
+          "viewports": []
+        },
+        "readability": {
+          "status": "fail",
+          "minimumProjectedNodeTextPx": 6,
+          "viewports": []
+        },
+        "viewerChrome": {
+          "status": "fail",
+          "viewports": []
+        },
+        "captures": {
+          "status": "not-requested",
+          "screenshots": [],
+          "contactSheet": null
+        },
+        "sidecars": {
+          "receipt": "nexuscart.browser-check.json",
+          "files": []
+        },
+        "error": "Chrome DevTools read pipe failed: stream ended\nChrome process: still running.\nChrome stderr:\n[1013/234629.567206:ERROR:third_party/crashpad/crashpad/util/mach/bootstrap.cc:65] bootstrap_check_in org.chromium.crashpad.child_port_handshake.75118.7447776.ZZJCUHRFOPGDHCOO: Permission denied (1100)\n[1013/234629.640918:ERROR:third_party/crashpad/crashpad/util/file/file_io.cc:103] ReadExactly: expected 4, observed 0\n[1013/234629.641476:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:208] open /Users/joysonpinto/Library/Application Support/Google/Chrome/Crashpad/settings.dat: Operation not permitted (1)\n[1013/234629.641526:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:208] open /Users/joysonpinto/Library/Application Support/Google/Chrome/Crashpad/settings.dat: Operation not permitted (1)\n[75108:7447838:1013/234629.810345:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in com.google.Chrome.MachPortRendezvousServer.75108: Permission denied (1100)\nChrome transport: Node v20.20.2, libuv 1.46.0, darwin; pid=75108, exitCode=null, signalCode=null.\nChrome read pipe: readable=false, ended=true, destroyed=false, receivedBytes=0, messages=0, bufferedBytes=0.\nChrome write pipe: writable=true, ended=false, destroyed=false, completedWrites=1, writtenBytes=50, bufferedBytes=0."
+      }
+    }
+  },
+  "diagnostics": [
+    {
+      "code": "viewer/browser-check-runtime",
+      "severity": "error",
+      "message": "browser-check could not complete its Chrome inspection.",
+      "subject": {
+        "artifact": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.html"
+      },
+      "evidence": {
+        "reason": "Chrome DevTools read pipe failed: stream ended\nChrome process: still running.\nChrome stderr:\n[1013/234629.567206:ERROR:third_party/crashpad/crashpad/util/mach/bootstrap.cc:65] bootstrap_check_in org.chromium.crashpad.child_port_handshake.75118.7447776.ZZJCUHRFOPGDHCOO: Permission denied (1100)\n[1013/234629.640918:ERROR:third_party/crashpad/crashpad/util/file/file_io.cc:103] ReadExactly: expected 4, observed 0\n[1013/234629.641476:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:208] open /Users/joysonpinto/Library/Application Support/Google/Chrome/Crashpad/settings.dat: Operation not permitted (1)\n[1013/234629.641526:ERROR:third_party/crashpad/crashpad/util/file/file_io_posix.cc:208] open /Users/joysonpinto/Library/Application Support/Google/Chrome/Crashpad/settings.dat: Operation not permitted (1)\n[75108:7447838:1013/234629.810345:FATAL:base/apple/mach_port_rendezvous_mac.cc:159] Check failed: kr == KERN_SUCCESS. bootstrap_check_in com.google.Chrome.MachPortRendezvousServer.75108: Permission denied (1100)\nChrome transport: Node v20.20.2, libuv 1.46.0, darwin; pid=75108, exitCode=null, signalCode=null.\nChrome read pipe: readable=false, ended=true, destroyed=false, receivedBytes=0, messages=0, bufferedBytes=0.\nChrome write pipe: writable=true, ended=false, destroyed=false, completedWrites=1, writtenBytes=50, bufferedBytes=0."
+      },
+      "supportedFixes": [
+        "resolve the reported Chrome inspection error, then rerun browser-check"
+      ]
+    }
+  ],
+  "evidence": {
+    "receipt": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.finalize.json",
+    "summaryReceipt": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.finalize-summary.json",
+    "browserCheckReceipt": "/Users/joysonpinto/Desktop/learning/Ecommer-Spring-boot-backend-main/.archify/architecture-nexuscart-20261013-233800/nexuscart.browser-check.json"
+  },
+  "visualReview": "not-requested",
+  "failedStage": "browser-check",
+  "finishedAt": "2026-10-13T18:16:30.004Z",
+  "durationMs": 5123,
+  "update": {
+    "status": "unavailable",
+    "installedVersion": null,
+    "availableVersion": null,
+    "releaseNotes": null,
+    "checkedAt": null,
+    "source": null,
+    "noticeRequired": false,
+    "noticeText": null,
+    "reason": "cache-valid"
+  }
+}
