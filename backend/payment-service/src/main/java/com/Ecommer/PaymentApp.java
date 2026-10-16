@@ -1,4 +1,4 @@
-package com.Ecommer;
+package com.ecommer;
 
 
 import org.springframework.boot.SpringApplication;

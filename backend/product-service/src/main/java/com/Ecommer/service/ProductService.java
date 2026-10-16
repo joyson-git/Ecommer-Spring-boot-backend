@@ -1,8 +1,8 @@
-package com.Ecommer.service;
+package com.ecommer.service;
 
-import com.Ecommer.entity.ProductStatus;
-import com.Ecommer.models.Product;
-import com.Ecommer.repositary.ProductRepository;
+import com.ecommer.entity.ProductStatus;
+import com.ecommer.model.Product;
+import com.ecommer.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -22,7 +22,7 @@ public  ProductService(ProductRepository productRepository){
 
         // If status is not provided, make the product ACTIVE
         if (product.getStatus() == null) {
-            product.setStatus(com.Ecommer.entity.ProductStatus.ACTIVE);
+            product.setStatus(com.ecommer.entity.ProductStatus.ACTIVE);
         }
 
         return productRepository.save(product);

@@ -7,7 +7,7 @@
 
     <!-- Parent -->
     <parent>
-        <groupId>com.Ecommer</groupId>
+        <groupId>com.ecommer</groupId>
         <artifactId>Ecommer</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath>../../pom.xml</relativePath>

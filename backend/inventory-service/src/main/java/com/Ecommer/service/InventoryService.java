@@ -1,7 +1,7 @@
-package com.Ecommer.service;
+package com.ecommer.service;
 
-import com.Ecommer.model.Inventory;
-import com.Ecommer.repositary.InventoryRepositary;
+import com.ecommer.model.Inventory;
+import com.ecommer.repository.InventoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,27 +12,27 @@ import java.util.stream.Collectors;
 @Service
 public class InventoryService {
 
-    private final InventoryRepositary inventoryRepositary;
+    private final InventoryRepository inventoryRepository;
 
-    public InventoryService(InventoryRepositary inventoryRepositary) {
-        this.inventoryRepositary = inventoryRepositary;
+    public InventoryService(InventoryRepository inventoryRepository) {
+        this.inventoryRepository = inventoryRepository;
     }
 
     // 1. Store Inventory: Fetch all inventory items for a specific store
     public List<Inventory> getStoreInventory(String storeId) {
-        return inventoryRepositary.findByStoreId(storeId);
+        return inventoryRepository.findByStoreId(storeId);
     }
 
     // 2. Stock Quantity: Get total physical quantity for a product in a store
     public Integer getStockQuantity(String storeId, String productId) {
-        return inventoryRepositary.findByStoreIdAndProductId(storeId, productId)
+        return inventoryRepository.findByStoreIdAndProductId(storeId, productId)
                 .map(Inventory::getQuantity)
                 .orElse(0);
     }
 
     // 3. Stock Reservation: Lock quantity when an order is placed
     public boolean reserverStock(String storeId, String productId, int amount) {
-        Optional<Inventory> opt = inventoryRepositary.findByStoreIdAndProductId(storeId, productId);
+        Optional<Inventory> opt = inventoryRepository.findByStoreIdAndProductId(storeId, productId);
         if (opt.isPresent()) {
             Inventory item = opt.get();
             int currentAvailable = item.getAvailableQuantity() != null ? item.getAvailableQuantity() : 0;
@@ -43,7 +43,7 @@ public class InventoryService {
                 item.setReserveQuantity(currentReserve + amount);
                 item.setAvailableQuantity(totalQuantity - item.getReserveQuantity());
                 item.setUpdatedAt(LocalDateTime.now());
-                inventoryRepositary.save(item);
+                inventoryRepository.save(item);
                 return true;
             }
         }
@@ -52,7 +52,7 @@ public class InventoryService {
 
     // 4. Stock Release: Free up reserved units on order cancellation/timeout
     public boolean releaseStock(String storeId, String productId, int amount) {
-        Optional<Inventory> opt = inventoryRepositary.findByStoreIdAndProductId(storeId, productId);
+        Optional<Inventory> opt = inventoryRepository.findByStoreIdAndProductId(storeId, productId);
         if (opt.isPresent()) {
             Inventory item = opt.get();
             int currentReserve = item.getReserveQuantity() != null ? item.getReserveQuantity() : 0;
@@ -61,7 +61,7 @@ public class InventoryService {
             item.setReserveQuantity(updatedReserve);
             item.setAvailableQuantity(totalQuantity - updatedReserve);
             item.setUpdatedAt(LocalDateTime.now());
-            inventoryRepositary.save(item);
+            inventoryRepository.save(item);
             return true;
         }
         return false;
@@ -69,18 +69,18 @@ public class InventoryService {
 
     // 5. Stock Updates: Restock or adjust base physical quantity
     public Inventory updateStockQuantity(String storeId, String productId, int newQuantity) {
-        Inventory item = inventoryRepositary.findByStoreIdAndProductId(storeId, productId)
+        Inventory item = inventoryRepository.findByStoreIdAndProductId(storeId, productId)
                 .orElseThrow(() -> new RuntimeException("Inventory item not found"));
 
         item.setQuantity(newQuantity);
         item.setAvailableQuantity(newQuantity - (item.getReserveQuantity() != null ? item.getReserveQuantity() : 0));
         item.setUpdatedAt(LocalDateTime.now());
-        return inventoryRepositary.save(item);
+        return inventoryRepository.save(item);
     }
 
     // 6. Low-Stock Detection: Retrieve items where available stock <= reorderLevel
     public List<Inventory> detectLowStock(String storeId) {
-        return inventoryRepositary.findByStoreId(storeId).stream()
+        return inventoryRepository.findByStoreId(storeId).stream()
                 .filter(item -> item.getAvailableQuantity() != null
                         && item.getReorderLevel() != null
                         && item.getAvailableQuantity() <= item.getReorderLevel())
@@ -89,14 +89,14 @@ public class InventoryService {
 
     // 7. Store Availability: Check if sufficient stock is available to purchase
     public boolean isAvailable(String storeId, String productId, int requestedAmount) {
-        return inventoryRepositary.findByStoreIdAndProductId(storeId, productId)
+        return inventoryRepository.findByStoreIdAndProductId(storeId, productId)
                 .map(item -> item.getAvailableQuantity() >= requestedAmount)
                 .orElse(false);
     }
 
     // 8. AI-Based Inventory Recommendations: Rule-based recommendation engine for restock quantity
     public String getAiInventoryRecommendation(String storeId, String productId) {
-        Optional<Inventory> opt = inventoryRepositary.findByStoreIdAndProductId(storeId, productId);
+        Optional<Inventory> opt = inventoryRepository.findByStoreIdAndProductId(storeId, productId);
         if (opt.isEmpty()) {
             return "No inventory record found for analysis.";
         }

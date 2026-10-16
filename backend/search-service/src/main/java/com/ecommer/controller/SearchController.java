@@ -1,0 +1,29 @@
+package com.ecommer.controller;
+
+
+import com.ecommer.dto.Product;
+import com.ecommer.service.SearchService;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+
+@RestController
+@RequestMapping("/search")
+public class SearchController {
+
+    @Autowired
+    private SearchService searchService;
+
+@GetMapping("/{keyword}")
+public List<Product> searchProduct(@PathVariable String keyword){
+    return searchService.searchByName(keyword);
+}
+
+
+}

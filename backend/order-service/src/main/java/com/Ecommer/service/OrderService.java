@@ -1,11 +1,11 @@
-package com.Ecommer.service;
+package com.ecommer.service;
 
-import com.Ecommer.dto.Cart;
-import com.Ecommer.dto.Payment;
-import com.Ecommer.dto.Product;
-import com.Ecommer.event.OrderPlacedEvent;
-import com.Ecommer.model.Order;
-import com.Ecommer.repositary.OrderRepository;
+import com.ecommer.dto.Cart;
+import com.ecommer.dto.Payment;
+import com.ecommer.dto.Product;
+import com.ecommer.event.OrderPlacedEvent;
+import com.ecommer.model.Order;
+import com.ecommer.repository.OrderRepository;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;

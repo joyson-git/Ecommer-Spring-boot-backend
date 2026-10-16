@@ -1,9 +1,9 @@
-package com.Ecommer.controller;
+package com.ecommer.controller;
 
-import com.Ecommer.dto.AssignDeliveryRequest;
-import com.Ecommer.dto.UpdateDeliveryStatusRequest;
-import com.Ecommer.model.Delivery;
-import com.Ecommer.service.DeliveryService;
+import com.ecommer.dto.AssignDeliveryRequest;
+import com.ecommer.dto.UpdateDeliveryStatusRequest;
+import com.ecommer.model.Delivery;
+import com.ecommer.service.DeliveryService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.Ecommer.model;
+package com.ecommer.model;
 
 public enum DeliveryStatus {
     PENDING,

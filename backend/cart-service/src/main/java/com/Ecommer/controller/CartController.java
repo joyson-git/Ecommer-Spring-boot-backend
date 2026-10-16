@@ -1,9 +1,9 @@
-package com.Ecommer.controller;
+package com.ecommer.controller;
 
-import com.Ecommer.dto.CartItemResponse;
-import com.Ecommer.dto.Product;
-import com.Ecommer.model.Cart;
-import com.Ecommer.service.CartService;
+import com.ecommer.dto.CartItemResponse;
+import com.ecommer.dto.Product;
+import com.ecommer.model.Cart;
+import com.ecommer.service.CartService;
 
 
 

@@ -1,8 +1,8 @@
-package com.Ecommer.controller;
+package com.ecommer.controller;
 
 
-import com.Ecommer.model.Inventory;
-import com.Ecommer.service.InventoryService;
+import com.ecommer.model.Inventory;
+import com.ecommer.service.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

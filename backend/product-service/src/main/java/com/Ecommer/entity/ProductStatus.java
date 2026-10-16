@@ -1,4 +1,4 @@
-package com.Ecommer.entity;
+package com.ecommer.entity;
 
 public enum ProductStatus {
     ACTIVE,

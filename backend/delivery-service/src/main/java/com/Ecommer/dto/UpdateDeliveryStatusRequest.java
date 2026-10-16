@@ -1,6 +1,6 @@
-package com.Ecommer.dto;
+package com.ecommer.dto;
 
-import com.Ecommer.model.DeliveryStatus;
+import com.ecommer.model.DeliveryStatus;
 
 public class UpdateDeliveryStatusRequest {
 

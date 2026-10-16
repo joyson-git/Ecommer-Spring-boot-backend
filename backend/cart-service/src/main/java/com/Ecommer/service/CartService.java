@@ -1,9 +1,9 @@
-package com.Ecommer.service;
+package com.ecommer.service;
 
-import com.Ecommer.dto.CartItemResponse;
-import com.Ecommer.dto.Product;
-import com.Ecommer.model.Cart;
-import com.Ecommer.repositary.CartRepository;
+import com.ecommer.dto.CartItemResponse;
+import com.ecommer.dto.Product;
+import com.ecommer.model.Cart;
+import com.ecommer.repository.CartRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 

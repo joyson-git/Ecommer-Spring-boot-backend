@@ -1,7 +1,7 @@
-package com.Ecommer.controller;
+package com.ecommer.controller;
 
-import com.Ecommer.models.Product;
-import com.Ecommer.service.ProductService;
+import com.ecommer.model.Product;
+import com.ecommer.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

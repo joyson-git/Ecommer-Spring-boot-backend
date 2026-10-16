@@ -1,10 +1,10 @@
-package com.Ecommer.controller;
+package com.ecommer.controller;
 
-import com.Ecommer.dto.Cart;
-import com.Ecommer.dto.Payment;
-import com.Ecommer.dto.Product;
-import com.Ecommer.model.Order;
-import com.Ecommer.service.OrderService;
+import com.ecommer.dto.Cart;
+import com.ecommer.dto.Payment;
+import com.ecommer.dto.Product;
+import com.ecommer.model.Order;
+import com.ecommer.service.OrderService;
 import org.apache.catalina.connector.Response;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

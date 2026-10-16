@@ -1,4 +1,4 @@
-package com.Ecommer.event;
+package com.ecommer.event;
 
 import java.math.BigDecimal;
 

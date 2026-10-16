@@ -1,7 +1,7 @@
-package com.Ecommer.service;
+package com.ecommer.service;
 
-import com.Ecommer.model.Payment;
-import com.Ecommer.repositary.PaymentRepository;
+import com.ecommer.model.Payment;
+import com.ecommer.repository.PaymentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

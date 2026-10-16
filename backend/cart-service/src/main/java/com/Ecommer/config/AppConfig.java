@@ -1,4 +1,4 @@
-package com.Ecommer.config;
+package com.ecommer.config;
 
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;

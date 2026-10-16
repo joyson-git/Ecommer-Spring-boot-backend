@@ -1,10 +1,10 @@
-package com.Ecommer.service;
+package com.ecommer.service;
 
-import com.Ecommer.dto.AssignDeliveryRequest;
-import com.Ecommer.dto.UpdateDeliveryStatusRequest;
-import com.Ecommer.model.Delivery;
-import com.Ecommer.model.DeliveryStatus;
-import com.Ecommer.repositary.DeliveryRepository;
+import com.ecommer.dto.AssignDeliveryRequest;
+import com.ecommer.dto.UpdateDeliveryStatusRequest;
+import com.ecommer.model.Delivery;
+import com.ecommer.model.DeliveryStatus;
+import com.ecommer.repository.DeliveryRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

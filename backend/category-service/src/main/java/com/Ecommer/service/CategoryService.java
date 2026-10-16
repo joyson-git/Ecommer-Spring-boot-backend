@@ -1,8 +1,8 @@
-package com.Ecommer.service;
+package com.ecommer.service;
 
 
-import com.Ecommer.model.Cartegory; // Added the correct import here!
-import com.Ecommer.repositary.CartegoryRepositary;
+import com.ecommer.model.Category; // Added the correct import here!
+import com.ecommer.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,31 +11,31 @@ import java.util.Optional;
 @Service
 public class CategoryService {
 
-    private final CartegoryRepositary categoryRepository;
+    private final CategoryRepository categoryRepository;
 
-    public CategoryService(CartegoryRepositary categoryRepository) {
+    public CategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
 
-    // Now it uses YOUR Cartegory model!
-    public Cartegory addCategory(Cartegory category) {
+    // Now it uses YOUR Category model!
+    public Category addCategory(Category category) {
         return categoryRepository.save(category);
     }
 
-    public List<Cartegory> getAllCategories() {
+    public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
 
-    public Cartegory getCategoryById(String id) {
-        Optional<Cartegory> category = categoryRepository.findById(id);
+    public Category getCategoryById(String id) {
+        Optional<Category> category = categoryRepository.findById(id);
         return category.orElse(null);
     }
 
-    public Cartegory updateCategory(String id, Cartegory newCategory) {
-        Optional<Cartegory> existing = categoryRepository.findById(id);
+    public Category updateCategory(String id, Category newCategory) {
+        Optional<Category> existing = categoryRepository.findById(id);
 
         if (existing.isPresent()) {
-            Cartegory cat = existing.get();
+            Category cat = existing.get();
             cat.setName(newCategory.getName());
             cat.setDescription(newCategory.getDescription());
             return categoryRepository.save(cat);

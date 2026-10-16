@@ -1,4 +1,4 @@
-package com.Ecommer.dto;
+package com.ecommer.dto;
 
 public class Payment {
 

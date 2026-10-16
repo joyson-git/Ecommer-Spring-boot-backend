@@ -1,7 +1,7 @@
-package com.Ecommer.controller;
+package com.ecommer.controller;
 
-import com.Ecommer.model.Payment;
-import com.Ecommer.service.PaymentService;
+import com.ecommer.model.Payment;
+import com.ecommer.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

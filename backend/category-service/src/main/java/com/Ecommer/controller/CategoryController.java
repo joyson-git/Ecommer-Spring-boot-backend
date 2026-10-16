@@ -1,8 +1,8 @@
-package com.Ecommer.controller;
+package com.ecommer.controller;
 
 
-import com.Ecommer.model.Cartegory;
-import com.Ecommer.service.CategoryService;
+import com.ecommer.model.Category;
+import com.ecommer.service.CategoryService;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
@@ -17,22 +17,22 @@ public class CategoryController {
     }
 
     @PostMapping
-    public Cartegory addCategory(@RequestBody Cartegory category) {
+    public Category addCategory(@RequestBody Category category) {
         return categoryService.addCategory(category);
     }
 
     @GetMapping
-    public List<Cartegory> getAllCategories() {
+    public List<Category> getAllCategories() {
         return categoryService.getAllCategories();
     }
 
     @GetMapping("/{id}")
-    public Cartegory getById(@PathVariable String id) {
+    public Category getById(@PathVariable String id) {
         return categoryService.getCategoryById(id);
     }
 
     @PutMapping("/{id}")
-    public Cartegory update(@PathVariable String id, @RequestBody Cartegory category) {
+    public Category update(@PathVariable String id, @RequestBody Category category) {
         return categoryService.updateCategory(id, category);
     }
 
