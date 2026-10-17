@@ -15,7 +15,7 @@ pipeline {
         stage('Build Spring Boot Services') {
             steps {
                 sh '''
-                    echo "Java version: $(java -version 2>&1 | awk -F[\".] 'NR==1 {print $2}')"
+                    java -version
                     chmod +x mvnw
                     ./mvnw -B clean package -DskipTests
                 '''
