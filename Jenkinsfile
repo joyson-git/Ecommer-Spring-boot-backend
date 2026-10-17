@@ -17,7 +17,7 @@ pipeline {
                 sh '''
                     java -version
                     chmod +x mvnw
-                    ./mvnw -B clean package -DskipTests
+                    ./mvnw -B clean package -DskipTests -Dhttp.keepAlive=false -Dmaven.wagon.http.retryHandler.count=5
                 '''
             }
         }
