@@ -25,10 +25,12 @@ pipeline {
         stage('Deploy with Docker Compose') {
             steps {
                 sh '''
-                    echo "Setting directory permissions for container volume mounts..."
+                    echo "Setting directory permissions..."
                     chmod -R 755 .
+                    echo "Stopping and removing existing containers to avoid name collisions..."
+                    (docker compose down --remove-orphans || docker-compose down --remove-orphans) || true
+                    docker rm -f eureka-server mongodb zookeeper kafka api-gateway auth-service product-service order-service cart-service payment-service category-service notification-service delivery-service search-service frontend-web || true
                     echo "Deploying microservices using Docker Compose..."
-                    (docker compose down || docker-compose down) || true
                     (docker compose up -d --build || docker-compose up -d --build)
                     (docker compose ps || docker-compose ps)
                 '''
