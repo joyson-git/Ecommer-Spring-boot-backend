@@ -204,12 +204,10 @@ services:
   # 5. FRONTEND WEB APPLICATION (Port 80)
   # -------------------------------------------------------------
   frontend:
-    image: nginx:alpine
+    build: ./frontend
     container_name: frontend-web
     ports:
       - "80:80"
-    volumes:
-      - ./frontend:/usr/share/nginx/html
     depends_on:
       - api-gateway
     networks:
