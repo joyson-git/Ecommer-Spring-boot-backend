@@ -36,7 +36,7 @@ pipeline {
 
     post {
         success {
-            echo "Deployment successful! You can view your application at http://140.245.243.106"
+            echo "Deployment successful! You can view your application at http://129.225.81.252"
         }
         failure {
             echo "Pipeline failed. Please check the logs above."
