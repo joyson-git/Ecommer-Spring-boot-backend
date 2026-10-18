@@ -25,6 +25,8 @@ pipeline {
         stage('Deploy with Docker Compose') {
             steps {
                 sh '''
+                    echo "Setting directory permissions for container volume mounts..."
+                    chmod -R 755 .
                     echo "Deploying microservices using Docker Compose..."
                     (docker compose down || docker-compose down) || true
                     (docker compose up -d --build || docker-compose up -d --build)
